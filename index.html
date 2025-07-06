@@ -1,132 +1,74 @@
-/* ===== Сброс базовых стилей ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Эллада — гостевой дом</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="overlay">
+      <div class="navbar">
+        <img src="img/logo.png" alt="Логотип" class="logo"/>
+        <nav class="nav-left">
+          <a href="index.html" class="nav-link">Главная</a>
+          <a href="about.html" class="nav-link">О нас</a>
+        </nav>
+        <div class="nav-center">
+          <a href="rooms.html" class="button-main">НАШИ НОМЕРА</a>
+        </div>
+        <nav class="nav-right">
+          <a href="contacts.html" class="nav-link active">Контакты</a>
+          <a href="offers.html" class="nav-link">Акции</a>
+        </nav>
+      </div>
+    </div>
+    <div class="hero-text">
+      <h1>ЭЛЛАДА</h1>
+      <p class="subtitle">Придумай сам — это гостевой дом в Горном Алтае</p>
+    </div>
+  </header>
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
-  line-height: 1.6;
-}
+<section class="video-section">
+  <video autoplay muted loop playsinline class="bg-video">
+    <source src="img/Video.mp4" type="video/mp4" />
+    Ваш браузер не поддерживает видео.
+  </video>
+</section>
+<!-- Блок "О НАС" -->
+<section class="about-section">
+  <div class="about-left">
+    <div class="about-gallery">
+      <img id="main-photo" src="img/1.jpg" alt="Основное фото" class="main-photo"/>
 
-/* ===== Основные цвета ===== */
-:root {
-  --green: #a8e6a1;         /* светло-зелёный */
-  --green-dark: #78c479;     /* тёмнее при наведении */
-  --red: #e53935;            /* красный (для акцентов) */
-  --bg-light: #ffffff;
-  --text-dark: #222;
-}
+      <div class="thumbnail-row">
+        <img src="img/1.jpg" class="thumbnail" onclick="changeMainPhoto(this.src)" />
+        <img src="img/2.jpg" class="thumbnail" onclick="changeMainPhoto(this.src)" />
+        <img src="img/3.jpg" class="thumbnail" onclick="changeMainPhoto(this.src)" />
+        <img src="img/4.jpg" class="thumbnail" onclick="changeMainPhoto(this.src)" />
+        <img src="img/5.jpg" class="thumbnail" onclick="changeMainPhoto(this.src)" />
+        <img src="img/6.jpg" class="thumbnail" onclick="changeMainPhoto(this.src)" />
+        <img src="img/7.jpg" class="thumbnail" onclick="changeMainPhoto(this.src)" />
+        <img src="img/8.jpg" class="thumbnail" onclick="changeMainPhoto(this.src)" />
+        <img src="img/9.jpg" class="thumbnail" onclick="changeMainPhoto(this.src)" />
+        <img src="img/10.jpg" class="thumbnail" onclick="changeMainPhoto(this.src)" />
+        <img src="img/11.jpg" class="thumbnail" onclick="changeMainPhoto(this.src)" />
+        <img src="img/12.jpg" class="thumbnail" onclick="changeMainPhoto(this.src)" />
+      </div>
+    </div>
+  </div>
 
-/* ===== Шапка ===== */
-header {
-  background-color: var(--bg-light);
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  border-radius: 0 0 16px 16px;
-}
+  <div class="about-right">
+    <h2 style="color: #005bff; font-size: 2.5em;">О НАС</h2>
+    <p class="about-text" style="color: #eeeeee;"><em>Тихий уголок среди гор и лесов</em></p>
+    <a href="rooms.html" class="button-main">НАШИ НОМЕРА</a>
+  </div>
+</section>
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--green-dark);
-}
-
-.logo span {
-  color: var(--red);
-  display: block;
-  font-size: 1.1rem;
-}
-
-nav a {
-  text-decoration: none;
-  color: var(--text-dark);
-  margin-left: 1.5rem;
-  font-weight: 500;
-  transition: color 0.3s;
-}
-
-nav a:hover {
-  color: var(--green-dark);
-}
-
-/* ===== Кнопки ===== */
-.button {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  background-color: var(--green);
-  color: #fff;
-  font-weight: bold;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-  text-decoration: none;
-  text-align: center;
-}
-
-.button:hover {
-  background-color: var(--green-dark);
-  transform: scale(1.03);
-}
-
-.button.red {
-  background-color: var(--red);
-}
-
-.button.red:hover {
-  background-color: #c62828;
-}
-
-/* ===== Блоки ===== */
-section {
-  padding: 3rem 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-h2 {
-  color: var(--green-dark);
-  margin-bottom: 1.5rem;
-  font-size: 2rem;
-}
-
-/* ===== Галерея ===== */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-}
-
-.gallery img {
-  width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  transition: transform 0.3s;
-}
-
-.gallery img:hover {
-  transform: scale(1.02);
-}
-
-/* ===== Подвал ===== */
-footer {
-  background-color: var(--green);
-  color: #fff;
-  text-align: center;
-  padding: 2rem;
-  border-radius: 16px 16px 0 0;
-  margin-top: 4rem;
-}
-
-footer a {
-  color: #fff;
-  text-decoration: underline;
-  margin: 0 0.5rem;
-}
+<!-- Смена фото -->
+<script>
+  function changeMainPhoto(src) {
+    document.getElementById('main-photo').src = src;
+  }
+</script>
