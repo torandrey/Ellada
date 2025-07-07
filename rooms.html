@@ -9,7 +9,7 @@
     html {
       scroll-behavior: smooth;
     }
-    .gallery {
+ .gallery {
   display: flex;
   overflow-x: auto;
   gap: 8px;
@@ -17,6 +17,8 @@
   margin-top: 10px;
   scroll-snap-type: x mandatory;
   position: relative;
+  max-width: 100%; /* <= главное ограничение ширины */
+  box-sizing: border-box;
 }
 
 .gallery img {
@@ -34,14 +36,14 @@
   transform: scale(1.05);
 }
 
-/* Убираем полосу прокрутки на мобильных */
+/* Убираем полосу прокрутки */
 .gallery::-webkit-scrollbar {
   display: none;
 }
 
-/* Намёк на свайп — стрелочки поверх галереи */
+/* Намёк на свайп */
 .gallery::after {
-  content: "⇠  Свайп  ⇢";
+  content: "⇠ Свайп ⇢";
   position: absolute;
   right: 8px;
   bottom: 8px;
@@ -53,6 +55,7 @@
   pointer-events: none;
   z-index: 1;
 }
+
     body.rooms-page {
       margin: 0;
       background: url('img/background.jpg') center/cover no-repeat fixed;
