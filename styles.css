@@ -1,0 +1,474 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  font-family: 'Segoe UI', sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+.hero {
+  background: url("img/background.jpg") center/cover no-repeat;
+  height: 100vh;
+  position: relative;
+  color: white;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1.5cm;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  padding: 0 1em;
+  z-index: 10;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  position: relative;
+}
+
+.nav-left-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+/* Навигация слева (Главная, О нас) */
+.nav-left {
+  display: flex;
+  gap: 1em;
+}
+
+/* Навигация справа (Контакты, Акции) */
+.nav-right {
+  display: flex;
+  gap: 1em;
+  justify-content: flex-end;
+}
+
+/* Кнопка по центру */
+.nav-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Логотип */
+.logo {
+  height: 100%;
+  max-height: 1.3cm;
+}
+
+/* Ссылки навигации */
+.nav-link {
+  color: #4dafff; /* синий цвет */
+  text-decoration: none;
+  font-size: 2rem; /* увеличен в 2 раза */
+  padding: 5px 10px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.nav-link.active {
+  
+}
+
+/* Кнопка "НАШИ НОМЕРА" */
+.button-main {
+  background-color: rgba(255, 255, 255, 0.75);
+  color: black;
+  padding: 8px 16px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  transform: translateY(-50%);
+  color: white;
+}
+
+.hero-text h1 {
+  font-size: 4em;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.subtitle {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+  .overlay {
+    flex-direction: column;
+    height: auto;
+    padding: 0.5em;
+  }
+
+  .navbar {
+    flex-direction: column;
+    gap: 0.5em;
+  }
+
+  .nav-left, .nav-right {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-text h1 {
+    font-size: 2.5em;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+}
+
+.video-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.bg-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+@media (max-width: 768px) {
+  .video-section {
+    height: 60vh;
+  }
+}
+.about-section {
+  display: flex;
+  flex-direction: row;
+  background: url("img/fon.jpg") center/cover no-repeat;
+  height: 100vh;
+  color: white;
+}
+
+.about-left, .about-right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2em;
+}
+
+.photo-gallery {
+  display: flex;
+  overflow-x: auto;
+  gap: 1em;
+  padding-bottom: 1em;
+}
+
+.photo-gallery img {
+  height: 150px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  transition: transform 0.3s;
+}
+
+.photo-gallery img:hover {
+  transform: scale(1.05);
+}
+
+.about-right h2 {
+  font-size: 4em;
+  color: #0050b3; /* яркий насыщенный синий */
+  margin-bottom: 1em;
+}
+
+
+.about-text {
+  font-style: italic;
+  font-size: 1.2em;
+  margin-bottom: 2em;
+  max-width: 90%;
+  color: #001f3f; /* очень тёмный синий */
+}
+
+
+.about-right .button-main {
+  align-self: flex-start;
+}
+
+/* Адаптивная версия */
+@media (max-width: 768px) {
+  .about-section {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .about-left, .about-right {
+    width: 100%;
+    padding: 1em;
+  }
+
+  .photo-gallery {
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+
+  .photo-gallery img {
+    height: 120px;
+  }
+
+  .about-right h2 {
+    text-align: center;
+  }
+
+  .about-text, .about-right .button-main {
+    text-align: center;
+    align-self: center;
+  }
+}
+.about-gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  width: 100%;
+}
+
+.main-photo {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.thumbnail-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5em;
+  max-width: 90%;
+}
+
+.thumbnail {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.thumbnail:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+.contacts-section {
+  display: flex;
+  flex-wrap: wrap;
+  background: url("img/fon2.jpg") center/cover no-repeat;
+  padding: 2em;
+  color: #004b91; /* тёмно-синий */
+  min-height: 500px;
+}
+
+.contacts-left, .contacts-right {
+  flex: 1 1 50%;
+  padding: 1em;
+}
+
+.contacts-left h2 {
+  font-size: 2.5em;
+  margin-bottom: 1rem;
+}
+
+.contacts-left p, 
+.contacts-left a {
+  font-size: 1.2em;
+  margin-bottom: 0.8rem;
+  text-decoration: none;
+  color: #004b91;
+}
+
+.contacts-left a:hover {
+  text-decoration: underline;
+}
+
+.contacts-right iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  border-radius: 12px;
+}
+
+/* Адаптация под мобильные */
+@media (max-width: 768px) {
+  .contacts-section {
+    flex-direction: column;
+    padding: 1em;
+  }
+
+  .contacts-left, .contacts-right {
+    flex: 1 1 100%;
+    padding: 1em 0;
+  }
+
+  .contacts-left h2 {
+    font-size: 2em;
+  }
+
+  .contacts-left p,
+  .contacts-left a {
+    font-size: 1em;
+  }
+.hero-text h1 {
+  font-size: 4.8em; /* чуть больше, чем было */
+  color: #1e40af; /* насыщенный синий, не яркий */
+  text-shadow: 1px 1px 3px rgba(30, 64, 175, 0.7); /* лёгкая тень */
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.hero-text .subtitle {
+  font-size: 1.4rem; /* немного увеличен */
+  color: #2563eb; /* приятный синий */
+  margin-top: 1rem;
+  font-style: normal; /* если хочется убрать курсив, иначе убирай */
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1.5cm;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  padding: 0 1em;
+  z-index: 10;
+  position: relative;
+  justify-content: space-between; /* Важная часть — чтобы крайние блоки прижимались к краям */
+}
+
+.nav-left {
+  display: flex;
+  gap: 1em;
+  flex: 1;
+  justify-content: flex-start; /* Слева */
+  align-items: center;
+}
+
+.nav-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nav-right {
+  display: flex;
+  gap: 1em;
+  flex: 1;
+  justify-content: flex-end; /* Справа */
+  align-items: center;
+}
+
+.nav-link {
+  color: #4dafff; /* синий цвет */
+  text-decoration: none;
+  font-size: 2rem; /* увеличен в 2 раза */
+  padding: 5px 10px;
+  transition: 0.3s;
+}
+
+.nav-link.active {
+  font-weight: bold;
+}
+.afisha-page .hero {
+  background: url("img/fon.jpg") center/cover no-repeat;
+}
+.afisha-page .hero {
+  background: url("img/fon.jpg") center/cover no-repeat;
+  background-attachment: fixed; /* 🔒 Фиксируем фон */
+}
+.activities {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.activity-card {
+  display: flex;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.activity-card img {
+  width: 40%;
+  object-fit: cover;
+}
+
+.activity-text {
+  padding: 20px;
+  width: 60%;
+}
+
+.activity-text h3 {
+  margin-top: 0;
+  color: #005bff;
+  font-size: 1.8em;
+}
+
+.activity-text p {
+  font-size: 1.1em;
+  color: #333;
+  margin-top: 10px;
+}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Эллада — гостевой дом</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Закрепленный фон только для страницы афиша */
+    body.afisha-page {
+      background-image: url('img/your-background.jpg'); /* путь к твоему фону */
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+    }
+  </style>
+</head>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Акции — Эллада</title>
+  <style>
+    /* Общие стили */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body, html {
+      font-family: 'Segoe UI', sans-serif;
+      height: 100%;
+      width: 100%;
+      color: white;
+      background: url("img/background.jpg") center/cover no-repeat fixed;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    /* Шапка */
+    .hero {
+      height: 1.5cm;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 10;
+    }
+    .overlay {
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      padding: 0 1em;
+    }
+    .navbar {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: space-between;
+      position: relative;
+    }
+    .nav-left-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+    }
+    .nav-left {
+      display: flex;
+      gap: 1em;
+    }
+    .nav-right {
+      display: flex;
+      gap: 1em;
+      justify-content: flex-end;
+    }
+    .nav-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .nav-link {
+      color: #4dafff;
+      text-decoration: none;
+      font-size: 2rem;
+      padding: 5px 10px;
+      transition: 0.3s;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .nav-link.active {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    .button-main {
+      background-color: rgba(255, 255, 255, 0.75);
+      color: black;
+      padding: 8px 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+      white-space: nowrap;
+    }
+    /* Основной блок с акциями */
+    .offers-block {
+      margin-top: 1.5cm; /* чтобы не перекрывало шапку */
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2em 3em;
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 15px;
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1.5rem;
+      font-weight: 500;
+      line-height: 1.4;
+      user-select: none;
+      text-align: center;
+      min-height: 200px;
+    }
+    /* Контакты */
+    .contacts-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2em;
+      padding: 2em;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+      border-radius: 15px;
+      max-width: 1200px;
+      margin: 2em auto 4em auto;
+      flex-shrink: 0; /* чтобы не сжималось */
+    }
+    .contacts-left {
+      flex: 1 1 300px;
+      font-size: 1rem;
+      line-height: 1.5;
+      min-width: 280px;
+    }
+    .contacts-left h2 {
+      margin-bottom: 0.5em;
+      font-size: 1.8rem;
+      color: #4dafff;
+    }
+    .contacts-left a {
+      color: #4dafff;
+      text-decoration: none;
+      word-break: break-word;
+    }
+    .contacts-right {
+      flex: 1 1 400px;
+      height: 250px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(77, 175, 255, 0.7);
+      min-width: 280px;
+    }
+    iframe {
+      border: none;
+      width: 100%;
+      height: 100%;
+      border-radius: 15px;
+    }
+    /* Футер */
+    footer {
+      background-color: #222;
+      color: #ccc;
+      padding: 1em;
+      text-align: center;
+      font-size: 0.9rem;
+      font-family: 'Segoe UI', sans-serif;
+      flex-shrink: 0;
+    }
+    footer a {
+      color: #4dafff;
+      text-decoration: none;
+    }
+    /* Адаптив */
+    @media (max-width: 768px) {
+      .nav-link {
+        font-size: 1.5rem;
+        padding: 3px 6px;
+      }
+      .button-main {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+      }
+      .offers-block {
+        font-size: 1.2rem;
+        padding: 1.5em 2em;
+        min-height: 150px;
+      }
+      .contacts-section {
+        flex-direction: column;
+        padding: 1.5em;
+      }
+      .contacts-right, .contacts-left {
+        flex: 1 1 100%;
+        min-width: auto;
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body class="offers-page">
+
+  <header class="hero">
+    <div class="overlay">
+      <div class="navbar">
+        <div class="nav-left-wrapper">
+          <nav class="nav-left">
+            <a href="index.html" class="nav-link">Главная</a>
+            <a href="index.html#gallery" class="nav-link">О нас</a>
+            <a href="afisha.html" class="nav-link">Развлечения</a>
+          </nav>
+        </div>
+        <div class="nav-center">
+          <a href="rooms.html" class="button-main">НАШИ НОМЕРА</a>
+        </div>
+        <nav class="nav-right">
+          <a href="#contacts" class="nav-link">Контакты</a>
+          <a href="offers.html" class="nav-link active">Акции</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main style="flex-grow:1; display:flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 1em; margin-top: 1.5cm;">
+    <div class="offers-block" role="main" aria-label="Информация об акциях">
+      СЛЕДИТЕ ЗА ОБНОВЛЕНИЯМИ —<br>СКОРО АКЦИИ ПОЯВЯТСЯ 🎉🎊🥳
+    </div>
+
+    <section class="contacts-section" id="contacts" aria-label="Контактная информация и карта">
+      <div class="contacts-left">
+        <h2>Контакты</h2>
+        <p>Айский тракт, 149Б<br>Алтайский район, Алтайский край</p>
+        <p>2 парковки<br>Круглосуточно</p>
+        <p><a href="tel:+79620383737">+7‒962‒038‒37‒37</a></p>
+        <p><a href="https://wa.me/79620383737" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
+      </div>
+      <div class="contacts-right">
+        <iframe 
+          src="https://yandex.ru/map-widget/v1/?ll=85.733197%2C51.800165&z=16&pt=85.733197,51.800165,pm2rdm~ЭЛЛАДА" 
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Карта гостевого дома Эллада"
+        ></iframe>
+      </div>
+    </section>
+  </main>
+
+  <!-- Скрипт смены фото, если понадобится -->
+  <script>
+    function changeMainPhoto(src) {
+      document.getElementById('main-photo').src = src;
+    }
+  </script>
+
+  <footer>
+    <p>© 2025 Гостевой дом "Эллада" — Айский тракт, 149Б<br>
+    Алтайский район, Алтайский край</p>
+    <p>WhatsApp: <a href="https://wa.me/79620383737" target="_blank" rel="noopener noreferrer">+7‒962‒038‒37‒37</a></p>
+  </footer>
+
+</body>
+</html>
