@@ -11,50 +11,69 @@
     }
  .gallery {
   display: flex;
-  overflow-x: auto;
+  flex-wrap: wrap; /* ← включаем перенос строк */
   gap: 8px;
-  padding-bottom: 8px;
   margin-top: 10px;
-  scroll-snap-type: x mandatory;
   position: relative;
-  max-width: 100%; /* <= главное ограничение ширины */
+  max-width: 100%;
   box-sizing: border-box;
 }
 
 .gallery img {
-  width: 80px;
-  height: 60px;
+  width: calc(25% - 6px); /* 4 в ряд, адаптивно */
+  max-width: 100px;
+  height: 70px;
   object-fit: cover;
   border-radius: 6px;
   cursor: pointer;
-  scroll-snap-align: start;
-  flex-shrink: 0;
   transition: transform 0.2s;
+  flex: 0 0 auto;
 }
 
 .gallery img:hover {
   transform: scale(1.05);
 }
 
-/* Убираем полосу прокрутки */
-.gallery::-webkit-scrollbar {
+/* Убираем свайп-подсказку на десктопе */
+.gallery::after {
   display: none;
 }
 
-/* Намёк на свайп */
-.gallery::after {
-  content: "⇠ Свайп ⇢";
-  position: absolute;
-  right: 8px;
-  bottom: 8px;
-  background: rgba(0, 0, 0, 0.4);
-  color: white;
-  padding: 2px 6px;
-  font-size: 12px;
-  border-radius: 4px;
-  pointer-events: none;
-  z-index: 1;
+/* Показываем свайп только на мобильных */
+@media (max-width: 600px) {
+  .gallery {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+
+  .gallery img {
+    width: 80px;
+    height: 60px;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+
+  .gallery::after {
+    content: "⇠ Свайп ⇢";
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    padding: 2px 6px;
+    font-size: 12px;
+    border-radius: 4px;
+    pointer-events: none;
+    z-index: 1;
+    display: block;
+  }
+
+  .gallery::-webkit-scrollbar {
+    display: none;
+  }
 }
+
 
     body.rooms-page {
       margin: 0;
