@@ -1,30 +1,25 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<style>
-  html {
-    scroll-behavior: smooth;
-  }
-</style>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Наши номера — Эллада</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
-    /* Фон с фиксированным положением и оформление кнопок */
+    html {
+      scroll-behavior: smooth;
+    }
     body.rooms-page {
-      background: url('img/background.jpg') center/cover no-repeat fixed;
       margin: 0;
+      background: url('img/background.jpg') center/cover no-repeat fixed;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #fff;
     }
-
-    /* Шапка - как на главной */
     header.hero {
       position: relative;
-      background: transparent;
+      z-index: 2;
     }
-    header .overlay {
+    .overlay {
       background: rgba(0, 0, 0, 0.5);
       padding: 10px 0;
     }
@@ -64,14 +59,11 @@
       background-color: #3a92d1;
     }
 
-    /* Основной контейнер для карточек */
     main {
       max-width: 1200px;
       margin: 40px auto;
       padding: 0 20px;
     }
-
-    /* Карточка комнаты */
     .room {
       display: flex;
       background: rgba(0, 0, 0, 0.6);
@@ -84,9 +76,8 @@
       flex: 1;
       min-width: 300px;
       max-width: 450px;
-      overflow: hidden;
     }
-    .room .left img.main-image {
+    .room .left img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -95,10 +86,9 @@
       cursor: pointer;
       transition: transform 0.3s ease;
     }
-    .room .left img.main-image:hover {
+    .room .left img:hover {
       transform: scale(1.05);
     }
-
     .room .right {
       flex: 1.2;
       padding: 20px 30px;
@@ -122,8 +112,6 @@
       font-size: 1.3rem;
       color: #4dafff;
     }
-
-    /* Галерея миниатюр */
     .gallery {
       display: flex;
       gap: 15px;
@@ -141,8 +129,6 @@
     .gallery img:hover {
       border-color: #4dafff;
     }
-
-    /* Адаптив */
     @media (max-width: 800px) {
       .room {
         flex-direction: column;
@@ -157,144 +143,203 @@
     }
   </style>
 </head>
-<body class="rooms-page">
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
- <div class="navbar" style="display: flex; align-items: center; width: 100%;">
-  <div class="nav-left-wrapper" style="display: flex; gap: 1em;">
-    <nav class="nav-left" style="display: flex; gap: 1em;">
-      <a href="index.html" class="nav-link" style="font-weight: 300;">Главная</a>
-      <a href="#about" class="nav-link" style="font-weight: 300;">О нас</a>
-      <a href="afisha.html" class="nav-link" style="font-weight: 300;">Развлечения</a>
-    </nav>
-  </div>
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Гостевой дом Эллада</title>
+</head>
+<body style="margin:0; padding:0; font-family:Arial, sans-serif;">
 
-  <div class="nav-center" style="position: absolute; left: 50%; transform: translateX(-50%);">
-    <a href="rooms.html" class="button-main">НАШИ НОМЕРА</a>
-  </div>
+  <!-- Фон -->
+  <div style="background-image: url('img/background.jpg'); background-size: cover; background-position: center; min-height: 100vh;">
 
-  <nav class="nav-right" style="display: flex; gap: 1em; margin-left: auto;">
-    <a href="#contacts" class="nav-link" style="font-weight: 300;">Контакты</a>
-    <a href="offers.html" class="nav-link" style="font-weight: 300;">Акции</a>
-  </nav>
+    <!-- Шапка -->
+    <div style="
+      background-color: rgba(255,255,255,0.85);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 15px;
+      flex-wrap: wrap;
+      position: relative;
+    ">
+
+      <!-- Левая часть: логотип и кнопки -->
+      <div style="display: flex; align-items: center; flex-wrap: wrap;">
+        <!-- Логотип -->
+        <img src="img/logo.png" alt="Логотип" style="height: 40px; margin-right: 15px;">
+
+        <!-- Меню -->
+        <div id="menu" style="display: flex; gap: 15px; flex-wrap: wrap;">
+          <a href="index.html" style="text-decoration: none; color: #002244;">Главная</a>
+          <a href="rooms.html" style="text-decoration: none; color: #002244;">Наши номера</a>
+          <a href="afisha.html" style="text-decoration: none; color: #002244;">Развлечения</a>
+          <a href="#contacts" style="text-decoration: none; color: #002244;">Контакты</a>
+          <a href="offers.html" style="text-decoration: none; color: #002244;">Акции</a>
+        </div>
+      </div>
+
+      <!-- Бургер справа -->
+      <div id="burger" style="display: none; flex-direction: column; cursor: pointer;">
+        <div style="width: 25px; height: 3px; background: #002244; margin: 3px 0;"></div>
+        <div style="width: 25px; height: 3px; background: #002244; margin: 3px 0;"></div>
+        <div style="width: 25px; height: 3px; background: #002244; margin: 3px 0;"></div>
+      </div>
+
+      <!-- Мобильное выпадающее меню -->
+      <div id="burger-menu" style="
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: rgba(255,255,255,0.95);
+        width: 100%;
+        flex-direction: column;
+        padding: 10px;
+      ">
+        <a href="index.html" style="padding: 5px 0; color: #002244;">Главная</a>
+        <a href="rooms.html" style="padding: 5px 0; color: #002244;">Наши номера</a>
+        <a href="afisha.html" style="padding: 5px 0; color: #002244;">Развлечения</a>
+        <a href="#contacts" style="padding: 5px 0; color: #002244;">Контакты</a>
+        <a href="offers.html" style="padding: 5px 0; color: #002244;">Акции</a>
+      </div>
+    </div>
+
+    <!-- Надпись под шапкой -->
+    <!-- каллиграфическая надпись -->
+<div style="
+  font-family: 'Great Vibes', cursive;
+  font-size: 46px;
+  color: white;
+  text-shadow: 1px 1px 3px black;
+  margin-left: 20px;
+  margin-top: 10px;
+  user-select: none;
+">
+  Гостевой дом Эллада
 </div>
 
-    </div>
+
+  </div>
+
+  <!-- Скрипт -->
+  <script>
+    const burger = document.getElementById('burger');
+    const menu = document.getElementById('menu');
+    const burgerMenu = document.getElementById('burger-menu');
+
+    function updateMenu() {
+      if (window.innerWidth <= 768) {
+        menu.style.display = 'none';
+        burger.style.display = 'flex';
+      } else {
+        menu.style.display = 'flex';
+        burger.style.display = 'none';
+        burgerMenu.style.display = 'none';
+      }
+    }
+
+    window.addEventListener('resize', updateMenu);
+    window.addEventListener('load', updateMenu);
+
+    burger.addEventListener('click', () => {
+      burgerMenu.style.display = burgerMenu.style.display === 'flex' ? 'none' : 'flex';
+    });
+  </script>
+
   </header>
 
   <main>
+    <!-- КАРТОЧКИ НОМЕРОВ -->
+
     <div class="room">
       <div class="left">
-        <img class="main-image" id="mainImage" src="https://raw.githubusercontent.com/torandrey/noi-altai/refs/heads/main/3.3.jpg" alt="Коттедж у реки">
+        <img class="main-image" src="https://raw.githubusercontent.com/torandrey/noi-altai/refs/heads/main/3.3.jpg" alt="Номер 1">
       </div>
       <div class="right">
         <div>
           <h2>Уютные двухместные с раздельными кроватями</h2>
           <p>Всего 2 номера, Wi-Fi, столик, душ, туалет.</p>
-          <p class="price">Цена: 5 000 ₽ / сутки</p>
+          <p class="price">5 000 ₽ / сутки</p>
         </div>
         <div class="gallery">
-          <img src="https://raw.githubusercontent.com/torandrey/noi-altai/refs/heads/main/3.3.jpg" alt="Фото 1" onclick="switchImage(this)">
-          <img src="https://raw.githubusercontent.com/torandrey/noi-altai/refs/heads/main/2.3.jpg" alt="Фото 2" onclick="switchImage(this)">
-          <img src="https://raw.githubusercontent.com/torandrey/noi-altai/refs/heads/main/1.3.jpeg" alt="Фото 3" onclick="switchImage(this)">
+          <img src="https://raw.githubusercontent.com/torandrey/noi-altai/refs/heads/main/3.3.jpg" onclick="switchImage(this)">
+          <img src="https://raw.githubusercontent.com/torandrey/noi-altai/refs/heads/main/2.3.jpg" onclick="switchImage(this)">
+          <img src="https://raw.githubusercontent.com/torandrey/noi-altai/refs/heads/main/1.3.jpeg" onclick="switchImage(this)">
         </div>
       </div>
     </div>
 
-<div class="room">
+    <div class="room">
       <div class="left">
-        <img class="main-image" id="mainImage" src="https://raw.githubusercontent.com/torandrey/noi-altai/refs/heads/main/3.3.jpg" alt="Коттедж у реки">
+        <img class="main-image" src="https://raw.githubusercontent.com/torandrey/noi-altai/refs/heads/main/2.3.jpg" alt="Номер 2">
       </div>
       <div class="right">
         <div>
           <h2>Двухместные с односпальными кроватями</h2>
           <p>Всего 3 номера, Wi-Fi, столик, душ, туалет.</p>
-          <p class="price">Цена: 5 000 ₽ / сутки</p>
+          <p class="price">5 000 ₽ / сутки</p>
         </div>
         <div class="gallery">
-          <img src="https://raw.githubusercontent.com/torandrey/noi-altai/refs/heads/main/3.3.jpg" alt="Фото 1" onclick="switchImage(this)">
-          <img src="https://raw.githubusercontent.com/torandrey/noi-altai/refs/heads/main/2.3.jpg" alt="Фото 2" onclick="switchImage(this)">
-          <img src="https://raw.githubusercontent.com/torandrey/noi-altai/refs/heads/main/1.3.jpeg" alt="Фото 3" onclick="switchImage(this)">
+          <img src="https://raw.githubusercontent.com/torandrey/noi-altai/refs/heads/main/3.3.jpg" onclick="switchImage(this)">
+          <img src="https://raw.githubusercontent.com/torandrey/noi-altai/refs/heads/main/2.3.jpg" onclick="switchImage(this)">
+          <img src="https://raw.githubusercontent.com/torandrey/noi-altai/refs/heads/main/1.3.jpeg" onclick="switchImage(this)">
         </div>
       </div>
     </div>
 
-<div class="room">
+    <div class="room">
       <div class="left">
-        <img class="main-image" id="mainImage" src="https://raw.githubusercontent.com/torandrey/noi-altai/refs/heads/main/3.3.jpg" alt="Коттедж у реки">
+        <img class="main-image" src="https://raw.githubusercontent.com/torandrey/noi-altai/refs/heads/main/1.3.jpeg" alt="Номер 3">
       </div>
       <div class="right">
         <div>
           <h2>Просторные трёхместные</h2>
-          <p>В номере: двухспальная кровать + односпальная кровать, Всего 3 номера, Wi-Fi, столик, душ, туалет.</p>
-          <p class="price">Цена: 5 500 ₽ / сутки</p>
+          <p>Двухспальная + односпальная кровать. Всего 3 номера, Wi-Fi, душ, туалет.</p>
+          <p class="price">5 500 ₽ / сутки</p>
         </div>
         <div class="gallery">
-          <img src="https://raw.githubusercontent.com/torandrey/noi-altai/refs/heads/main/3.3.jpg" alt="Фото 1" onclick="switchImage(this)">
-          <img src="https://raw.githubusercontent.com/torandrey/noi-altai/refs/heads/main/2.3.jpg" alt="Фото 2" onclick="switchImage(this)">
-          <img src="https://raw.githubusercontent.com/torandrey/noi-altai/refs/heads/main/1.3.jpeg" alt="Фото 3" onclick="switchImage(this)">
+          <img src="https://raw.githubusercontent.com/torandrey/noi-altai/refs/heads/main/3.3.jpg" onclick="switchImage(this)">
+          <img src="https://raw.githubusercontent.com/torandrey/noi-altai/refs/heads/main/2.3.jpg" onclick="switchImage(this)">
+          <img src="https://raw.githubusercontent.com/torandrey/noi-altai/refs/heads/main/1.3.jpeg" onclick="switchImage(this)">
         </div>
       </div>
     </div>
 
-<div class="room">
+    <div class="room">
       <div class="left">
-        <img class="main-image" id="mainImage" src="https://raw.githubusercontent.com/torandrey/noi-altai/refs/heads/main/3.3.jpg" alt="Коттедж у реки">
+        <img class="main-image" src="https://raw.githubusercontent.com/torandrey/noi-altai/refs/heads/main/3.3.jpg" alt="Номер 4">
       </div>
       <div class="right">
         <div>
           <h2>Большие номера "Под крышей"</h2>
-          <p>Площадь около 50 кв.м.В каждом номере 2 двухспальные кровати, Всего 2 номера</p>
-          <p class="price">Цена: 8 500 ₽ / сутки</p>
+          <p>Площадь ~50 кв.м, в каждом номере по 2 двухспальные кровати. Всего 2 номера.</p>
+          <p class="price">8 500 ₽ / сутки</p>
         </div>
         <div class="gallery">
-          <img src="https://raw.githubusercontent.com/torandrey/noi-altai/refs/heads/main/3.3.jpg" alt="Фото 1" onclick="switchImage(this)">
-          <img src="https://raw.githubusercontent.com/torandrey/noi-altai/refs/heads/main/2.3.jpg" alt="Фото 2" onclick="switchImage(this)">
-          <img src="https://raw.githubusercontent.com/torandrey/noi-altai/refs/heads/main/1.3.jpeg" alt="Фото 3" onclick="switchImage(this)">
+          <img src="https://raw.githubusercontent.com/torandrey/noi-altai/refs/heads/main/3.3.jpg" onclick="switchImage(this)">
+          <img src="https://raw.githubusercontent.com/torandrey/noi-altai/refs/heads/main/2.3.jpg" onclick="switchImage(this)">
+          <img src="https://raw.githubusercontent.com/torandrey/noi-altai/refs/heads/main/1.3.jpeg" onclick="switchImage(this)">
         </div>
       </div>
     </div>
-
-    <!-- Можно добавить больше карточек комнат ниже по такому же шаблону -->
   </main>
 
   <script>
     function switchImage(img) {
-      const mainImg = document.getElementById('mainImage');
+      const mainImg = img.closest('.room').querySelector('.main-image');
       mainImg.src = img.src;
       mainImg.alt = img.alt;
     }
   </script>
-
 </body>
 </html>
-<section class="contacts-section">
-  <div class="contacts-left">
-    <h2>Контакты</h2>
-    <p>Айский тракт, 149Б<br>Алтайский район, Алтайский край</p>
-    <p>2 парковки<br>Круглосуточно</p>
-    <p><a href="tel:+79620383737">+7‒962‒038‒37‒37</a></p>
-    <p><a href="https://wa.me/79620383737" target="_blank">WhatsApp</a></p>
-  </div>
-  <div class="contacts-right">
-    <iframe 
-      src="https://yandex.ru/map-widget/v1/?ll=85.733197%2C51.800165&z=16&pt=85.733197,51.800165,pm2rdm~ЭЛЛАДА" 
-      width="100%" 
-      height="100%" 
-      frameborder="0" 
-      allowfullscreen
-    ></iframe>
-  </div>
-</section>
-
-<!-- Смена фото -->
-<script>
-  function changeMainPhoto(src) {
-    document.getElementById('main-photo').src = src;
-  }
-</script>
-<footer id="contacts" class="footer">
-<footer style="background-color:#222; color:#ccc; padding:1em; text-align:center; font-size:0.9rem; font-family:'Segoe UI', sans-serif;">
-  <p>© 2025 Гостевой дом "Эллада" — Айский тракт, 149Б<br>
-  Алтайский район, Алтайский край</p>
-  <p>WhatsApp: <a href="https://wa.me/79620383737" target="_blank" style="color:#4dafff; text-decoration:none;">+7‒962‒038‒37‒37</a></p>
-</footer>
