@@ -1,110 +1,217 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Развлечения — Гостевой дом Эллада</title>
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
-    /* Бургер стили */
-    @media screen and (max-width: 768px) {
-      #menu {
-        display: none !important;
-      }
-
-      #burger {
-        display: flex !important;
-      }
-    }
-  </style>
+  <title>Гостевой дом Эллада</title>
 </head>
 <body style="margin:0; padding:0; font-family:Arial, sans-serif;">
 
-<!-- Шапка -->
+  <!-- Фон -->
+  <div style="background-image: url('img/background.jpg'); background-size: cover; background-position: center; min-height: 100vh;">
+
+    <!-- Шапка -->
+    <div style="
+      background-color: rgba(255,255,255,0.85);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 15px;
+      flex-wrap: wrap;
+      position: relative;
+    ">
+
+      <!-- Левая часть: логотип и кнопки -->
+      <div style="display: flex; align-items: center; flex-wrap: wrap;">
+        <!-- Логотип -->
+        <img src="img/logo.png" alt="Логотип" style="height: 40px; margin-right: 15px;">
+
+        <!-- Меню -->
+        <div id="menu" style="display: flex; gap: 15px; flex-wrap: wrap;">
+          <a href="index.html" style="text-decoration: none; color: #002244;">Главная</a>
+          <a href="rooms.html" style="text-decoration: none; color: #002244;">Наши номера</a>
+          <a href="afisha.html" style="text-decoration: none; color: #002244;">Развлечения</a>
+          <a href="#contacts" style="text-decoration: none; color: #002244;">Контакты</a>
+          <a href="offers.html" style="text-decoration: none; color: #002244;">Акции</a>
+        </div>
+      </div>
+
+      <!-- Бургер справа -->
+      <div id="burger" style="display: none; flex-direction: column; cursor: pointer;">
+        <div style="width: 25px; height: 3px; background: #002244; margin: 3px 0;"></div>
+        <div style="width: 25px; height: 3px; background: #002244; margin: 3px 0;"></div>
+        <div style="width: 25px; height: 3px; background: #002244; margin: 3px 0;"></div>
+      </div>
+
+      <!-- Мобильное выпадающее меню -->
+      <div id="burger-menu" style="
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: rgba(255,255,255,0.95);
+        width: 100%;
+        flex-direction: column;
+        padding: 10px;
+      ">
+        <a href="index.html" style="padding: 5px 0; color: #002244;">Главная</a>
+        <a href="rooms.html" style="padding: 5px 0; color: #002244;">Наши номера</a>
+        <a href="afisha.html" style="padding: 5px 0; color: #002244;">Развлечения</a>
+        <a href="#contacts" style="padding: 5px 0; color: #002244;">Контакты</a>
+        <a href="offers.html" style="padding: 5px 0; color: #002244;">Акции</a>
+      </div>
+    </div>
+
+    <!-- Надпись под шапкой -->
+    <!-- каллиграфическая надпись -->
 <div style="
-  background-color: rgba(255,255,255,0.85);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 15px;
-  flex-wrap: wrap;
-  position: relative;
+  font-family: 'Great Vibes', cursive;
+  font-size: 46px;
+  color: white;
+  text-shadow: 1px 1px 3px black;
+  margin-left: 20px;
+  margin-top: 10px;
+  user-select: none;
 ">
+  Гостевой дом Эллада
+</div>
 
-  <!-- Левая часть: логотип и меню -->
-  <div style="display: flex; align-items: center; flex-wrap: wrap;">
-    <!-- Логотип -->
-    <img src="img/logo.png" alt="Логотип" style="height: 40px; margin-right: 15px;">
 
-    <!-- Меню -->
-    <div id="menu" style="display: flex; gap: 15px; flex-wrap: wrap;">
-      <a href="index.html" style="text-decoration: none; color: #002244;">Главная</a>
-      <a href="rooms.html" style="text-decoration: none; color: #002244;">Наши номера</a>
-      <a href="afisha.html" style="text-decoration: none; color: #002244;">Развлечения</a>
-      <a href="#contacts" style="text-decoration: none; color: #002244;">Контакты</a>
-      <a href="offers.html" style="text-decoration: none; color: #002244;">Акции</a>
+  </div>
+
+  <!-- Скрипт -->
+  <script>
+    const burger = document.getElementById('burger');
+    const menu = document.getElementById('menu');
+    const burgerMenu = document.getElementById('burger-menu');
+
+    function updateMenu() {
+      if (window.innerWidth <= 768) {
+        menu.style.display = 'none';
+        burger.style.display = 'flex';
+      } else {
+        menu.style.display = 'flex';
+        burger.style.display = 'none';
+        burgerMenu.style.display = 'none';
+      }
+    }
+
+    window.addEventListener('resize', updateMenu);
+    window.addEventListener('load', updateMenu);
+
+    burger.addEventListener('click', () => {
+      burgerMenu.style.display = burgerMenu.style.display === 'flex' ? 'none' : 'flex';
+    });
+  </script>
+<section style="padding: 40px; background: rgba(255,255,255,0.1);">
+  
+  <!-- Карточка 1 -->
+  <div style="display: flex; background: rgba(255,255,255,0.85); border-radius: 20px; margin-bottom: 30px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <img src="img/quad.jpg" alt="Квадроциклы" style="width: 50%; object-fit: cover;">
+    <div style="padding: 20px;">
+      <h2 style="margin-top: 0;">Аренда квадроциклов</h2>
+      <p>Прокат квадроциклов по живописным маршрутам рядом с базой. Отличный выбор для любителей скорости и природы!</p>
     </div>
   </div>
 
-  <!-- Бургер справа -->
-  <div id="burger" style="display: none; flex-direction: column; cursor: pointer;">
-    <div style="width: 25px; height: 3px; background: #002244; margin: 3px 0;"></div>
-    <div style="width: 25px; height: 3px; background: #002244; margin: 3px 0;"></div>
-    <div style="width: 25px; height: 3px; background: #002244; margin: 3px 0;"></div>
+  <!-- Карточка 2 -->
+  <div style="display: flex; background: rgba(255,255,255,0.85); border-radius: 20px; margin-bottom: 30px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <img src="img/rafting.jpg" alt="Сплавы" style="width: 50%; object-fit: cover;">
+    <div style="padding: 20px;">
+      <h2 style="margin-top: 0;">Сплавы на лодках</h2>
+      <p>Увлекательные и безопасные маршруты по реке. Идеально для всей семьи и начинающих туристов.</p>
+    </div>
   </div>
 
-  <!-- Мобильное выпадающее меню -->
-  <div id="burger-menu" style="
-    display: none;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: rgba(255,255,255,0.95);
-    width: 100%;
-    flex-direction: column;
-    padding: 10px;
-  ">
-    <a href="index.html" style="padding: 5px 0; color: #002244;">Главная</a>
-    <a href="rooms.html" style="padding: 5px 0; color: #002244;">Наши номера</a>
-    <a href="afisha.html" style="padding: 5px 0; color: #002244;">Развлечения</a>
-    <a href="#contacts" style="padding: 5px 0; color: #002244;">Контакты</a>
-    <a href="offers.html" style="padding: 5px 0; color: #002244;">Акции</a>
+  <!-- Карточка 3 -->
+  <div style="display: flex; background: rgba(255,255,255,0.85); border-radius: 20px; margin-bottom: 30px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <img src="img/motorboat.jpg" alt="Моторные лодки" style="width: 50%; object-fit: cover;">
+    <div style="padding: 20px;">
+      <h2 style="margin-top: 0;">Катание на моторных лодках</h2>
+      <p>Быстрая прогулка по Катуни с ветерком и яркими впечатлениями. Отличный отдых для любителей воды!</p>
+    </div>
   </div>
-</div>
 
-<!-- Здесь будет основной контент страницы "Развлечения" -->
-<div style="padding: 40px; text-align: center;">
-  <h1>Развлечения</h1>
-  <p>Здесь появится информация о развлечениях на базе отдыха «Эллада».</p>
-</div>
+  <!-- Карточка 4 -->
+  <div style="display: flex; background: rgba(255,255,255,0.85); border-radius: 20px; margin-bottom: 30px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <img src="img/excursion.jpg" alt="Экскурсии" style="width: 50%; object-fit: cover;">
+    <div style="padding: 20px;">
+      <h2 style="margin-top: 0;">Экскурсии</h2>
+      <p>Групповые и индивидуальные туры по красивейшим местам Алтая с профессиональными гидами.</p>
+    </div>
+  </div>
 
-<!-- Скрипт -->
+  <!-- Карточка 5 -->
+  <div style="display: flex; background: rgba(255,255,255,0.85); border-radius: 20px; margin-bottom: 30px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <img src="img/horses.jpg" alt="Конные прогулки" style="width: 50%; object-fit: cover;">
+    <div style="padding: 20px;">
+      <h2 style="margin-top: 0;">Конные прогулки</h2>
+      <p>Покатайтесь верхом по тропам и лесам. Для новичков и опытных всадников — незабываемо!</p>
+    </div>
+  </div>
+
+  <!-- Карточка 6 -->
+  <div style="display: flex; background: rgba(255,255,255,0.85); border-radius: 20px; margin-bottom: 30px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <img src="img/jeep.jpg" alt="Джип-туры" style="width: 50%; object-fit: cover;">
+    <div style="padding: 20px;">
+      <h2 style="margin-top: 0;">Джип-туры</h2>
+      <p>Внедорожные маршруты по горам, долинам и рекам. Настоящее приключение для всей компании!</p>
+    </div>
+  </div>
+
+  <!-- Карточка 7 -->
+  <div style="display: flex; background: rgba(255,255,255,0.85); border-radius: 20px; margin-bottom: 30px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <img src="img/cave.jpeg" alt="Пещеры" style="width: 50%; object-fit: cover;">
+    <div style="padding: 20px;">
+      <h2 style="margin-top: 0;">Пещеры</h2>
+      <p>Исследуй загадочные пещеры и подземные тоннели. Всё безопасно и увлекательно с нашими гидами.</p>
+    </div>
+  </div>
+
+  <!-- Карточка 8 -->
+  <div style="display: flex; background: rgba(255,255,255,0.85); border-radius: 20px; margin-bottom: 30px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <img src="img/lake.jpg" alt="Озеро" style="width: 50%; object-fit: cover;">
+    <div style="padding: 20px;">
+      <h2 style="margin-top: 0;">Искусственное озеро</h2>
+      <p>Идеальное место для купания, отдыха и фото на фоне кристально чистой воды и горных пейзажей.</p>
+    </div>
+  </div>
+
+<section class="contacts-section">
+  <div class="contacts-left">
+    <h2>Контакты</h2>
+    <p>Айский тракт, 149Б<br>Алтайский район, Алтайский край</p>
+    <p>2 парковки<br>Круглосуточно</p>
+    <p><a href="tel:+79620383737">+7‒962‒038‒37‒37</a></p>
+    <p><a href="https://wa.me/79620383737" target="_blank">WhatsApp</a></p>
+  </div>
+  <div class="contacts-right">
+    <iframe 
+      src="https://yandex.ru/map-widget/v1/?ll=85.733197%2C51.800165&z=16&pt=85.733197,51.800165,pm2rdm~ЭЛЛАДА" 
+      width="100%" 
+      height="100%" 
+      frameborder="0" 
+      allowfullscreen
+    ></iframe>
+  </div>
+</section>
+
+<!-- Смена фото -->
 <script>
-  const burger = document.getElementById('burger');
-  const menu = document.getElementById('menu');
-  const burgerMenu = document.getElementById('burger-menu');
-
-  function updateMenu() {
-    if (window.innerWidth <= 768) {
-      menu.style.display = 'none';
-      burger.style.display = 'flex';
-    } else {
-      menu.style.display = 'flex';
-      burger.style.display = 'none';
-      burgerMenu.style.display = 'none';
-    }
+  function changeMainPhoto(src) {
+    document.getElementById('main-photo').src = src;
   }
-
-  window.addEventListener('resize', updateMenu);
-  window.addEventListener('load', updateMenu);
-
-  burger.addEventListener('click', () => {
-    burgerMenu.style.display = burgerMenu.style.display === 'flex' ? 'none' : 'flex';
-  });
 </script>
-
-</body>
-</html>
+<footer id="contacts" class="footer">
+<footer style="background-color:#222; color:#ccc; padding:1em; text-align:center; font-size:0.9rem; font-family:'Segoe UI', sans-serif;">
+  <p>© 2025 Гостевой дом "Эллада" — Айский тракт, 149Б<br>
+  Алтайский район, Алтайский край</p>
+  <p>WhatsApp: <a href="https://wa.me/79620383737" target="_blank" style="color:#4dafff; text-decoration:none;">+7‒962‒038‒37‒37</a></p>
+</footer>
