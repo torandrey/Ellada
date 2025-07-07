@@ -1,74 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 10px 20px;
-}
-.nav-link {
-  color: white;
-  text-decoration: none;
-  padding: 10px;
-}
-.burger {
-  display: none;
-  flex-direction: column;
-  gap: 4px;
-  cursor: pointer;
-}
-.burger div {
-  width: 25px;
-  height: 3px;
-  background: white;
-}
-
-/* скрыть меню на мобилке, показать при нажатии */
-.nav-left {
-  display: flex;
-  gap: 15px;
-}
-.nav-left.active {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  background: #222;
-  margin-top: 10px;
-}
-
-@media (max-width: 768px) {
-  .burger {
-    display: flex;
-  }
-  .nav-left {
-    display: none;
-  }
-  .nav-left.active {
-    display: flex;
-  }
-}
-
-<head>
-  <!-- ... другие метатеги ... -->
-
-  <!-- Open Graph (Facebook, WhatsApp, Telegram и др.) -->
-  <meta property="og:title" content="Гостевой дом Эллада — отдых на Алтае" />
-  <meta property="og:description" content="Уютный гостевой дом на Алтае с комфортными номерами и отличным сервисом." />
-  <meta property="og:image" content="https://raw.githubusercontent.com/torandrey/Ellada/refs/heads/main/img/logo.png" />
-  <meta property="og:url" content="https://dom-ellada.ru" />
-  <meta property="og:type" content="website" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Гостевой дом Эллада — отдых на Алтае" />
-  <meta name="twitter:description" content="Уютный гостевой дом на Алтае с комфортными номерами и отличным сервисом." />
-  <meta name="twitter:image" content="https://raw.githubusercontent.com/torandrey/Ellada/refs/heads/main/img/logo.png" />
-
-  <!-- ... остальной head ... -->
-</head>
 <style>
   html {
     scroll-behavior: smooth;
@@ -80,31 +12,7 @@
   <title>Эллада — гостевой дом</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<script>
-  function toggleMenu() {
-    const nav = document.getElementById('navLeft');
-    nav.classList.toggle('active');
-  }
-</script>
-
 <body>
-<header class="hero">
-  <div class="overlay">
-    <div class="navbar">
-      <div class="burger" onclick="toggleMenu()">
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-      <div class="nav-left" id="navLeft">
-        <a href="index.html" class="nav-link">Главная</a>
-        <a href="#about" class="nav-link">О нас</a>
-        <a href="#contacts" class="nav-link">Контакты</a>
-      </div>
-    </div>
-  </div>
-</header>
-
 <header class="hero">
   <div class="overlay">
     <div class="navbar">
