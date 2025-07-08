@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Наши номера — Эллада</title>
+  <link rel="stylesheet" href="styles.css" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Гостевой дом Эллада</title>
@@ -10,16 +14,127 @@
     html {
       scroll-behavior: smooth;
     }
+ .gallery {
+  display: flex;
+  flex-wrap: wrap; /* ← включаем перенос строк */
+  gap: 8px;
+  margin-top: 10px;
+  position: relative;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.gallery img {
+  width: calc(25% - 6px); /* 4 в ряд, адаптивно */
+  max-width: 100px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  flex: 0 0 auto;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* Убираем свайп-подсказку на десктопе */
+.gallery::after {
+  display: none;
+}
+
+/* Показываем свайп только на мобильных */
+@media (max-width: 600px) {
+  .gallery {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+
+  .gallery img {
+    width: 80px;
+    height: 60px;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+
+  .gallery::after {
+    content: "⇠ Свайп ⇢";
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    padding: 2px 6px;
+    font-size: 12px;
+    border-radius: 4px;
+    pointer-events: none;
+    z-index: 1;
+    display: block;
+  }
+
+  .gallery::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+
+    body.rooms-page {
 
     body {
       margin: 0;
+      background: url('img/background.jpg') center/cover no-repeat fixed;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+    }
+    header.hero {
+      position: relative;
+      z-index: 2;
+    }
+    .overlay {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px 0;
       padding: 0;
       font-family: Arial, sans-serif;
     }
+    .navbar {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    .nav-left, .nav-right {
+      display: flex;
+      gap: 20px;
+    }
+    .nav-link {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    .nav-link:hover {
+      color: #4dafff;
+    }
+    .button-main {
+      background-color: #4dafff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
 
     .mobile-title {
       display: none;
     }
+    .button-main:hover {
+      background-color: #3a92d1;
 
     @media (max-width: 768px) {
       .mobile-title {
@@ -42,6 +157,10 @@
       }
     }
 
+    main {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
     /* Слайд-шоу */
     .slideshow {
       background-image: url('фото главные/главное фото 1.jpg');
@@ -51,24 +170,44 @@
       min-height: 100vh;
       transition: background-image 1s ease-in-out;
     }
+    .room {
 
     /* Шапка */
     .header {
       background-color: rgba(255, 255, 255, 0.85);
       display: flex;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 15px;
+      overflow: hidden;
+      margin-bottom: 40px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+    .room .left {
+      flex: 1;
+      min-width: 300px;
+      max-width: 450px;
       align-items: center;
       justify-content: space-between;
       padding: 10px 15px;
       flex-wrap: wrap;
       position: relative;
     }
+    .room .left img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 0 0 0 15px;
 
     /* Бургер */
     #burger {
       display: none;
       flex-direction: column;
       cursor: pointer;
+      transition: transform 0.3s ease;
     }
+    .room .left img:hover {
+      transform: scale(1.05);
 
     #burger div {
       width: 25px;
@@ -76,6 +215,10 @@
       background: #002244;
       margin: 3px 0;
     }
+    .room .right {
+      flex: 1.2;
+      padding: 20px 30px;
+      display: flex;
 
     /* Бургер-меню */
     #burger-menu {
@@ -88,9 +231,46 @@
       width: 100vw;
       box-sizing: border-box;
       flex-direction: column;
+      justify-content: space-between;
+      color: #eee;
+    }
+    .room h2 {
+      margin-top: 0;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    .room p {
+      font-size: 1.1rem;
+      line-height: 1.4;
+      margin-bottom: 15px;
+    }
+    .price {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: #4dafff;
       padding: 10px 15px;
       z-index: 1000;
     }
+    @media (max-width: 800px) {
+      .room {
+        flex-direction: column;
+      }
+      .room .left, .room .right {
+        max-width: 100%;
+      }
+      .gallery img {
+        width: 70px;
+        height: 50px;
+      }
+    .room .right {
+  flex: 1.2;
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #eee;
+  min-width: 0; /* ← ДОБАВЬ ЭТУ СТРОКУ */
+}
 
     /* Каллиграфическая надпись */
     .hero-text {
@@ -104,29 +284,58 @@
     }
   </style>
 </head>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Гостевой дом Эллада</title>
+</head>
+<body style="margin:0; padding:0; font-family:Arial, sans-serif;">
 <body>
 
+  <!-- Фон -->
+  <div style="background-image: url('1.jpg'); background-size: cover; background-position: center; min-height: 100vh;">
   <!-- Слайд-шоу -->
   <div class="slideshow" id="slideshow">
 
     <!-- Шапка -->
+    <div style="
+      background-color: rgba(255,255,255,0.85);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 15px;
+      flex-wrap: wrap;
+      position: relative;
+    ">
+
+      <!-- Левая часть: логотип и кнопки -->
     <div class="header">
       <!-- Левая часть -->
       <div style="display: flex; align-items: center; flex-wrap: wrap;">
+        <!-- Логотип -->
         <img src="img/logo.png" alt="Логотип" style="height: 40px; margin-right: 15px;">
         <div class="mobile-title">Гостевой дом Эллада</div>
 
         <!-- Меню -->
         <div id="menu" style="display: flex; gap: 15px; flex-wrap: wrap;">
-          <a href="index.html" style="text-decoration: none; color: #002244;">Главная</a>
-          <a href="rooms.html" style="text-decoration: none; color: #002244;">Наши номера</a>
-          <a href="afisha.html" style="text-decoration: none; color: #002244;">Развлечения</a>
-          <a href="#contacts" style="text-decoration: none; color: #002244;">Контакты</a>
-          <a href="offers.html" style="text-decoration: none; color: #002244;">Акции</a>
+@@ -247,24 +127,15 @@
         </div>
       </div>
 
+      <!-- Бургер справа -->
+      <div id="burger" style="display: none; flex-direction: column; cursor: pointer;">
+        <div style="width: 25px; height: 3px; background: #002244; margin: 3px 0;"></div>
+        <div style="width: 25px; height: 3px; background: #002244; margin: 3px 0;"></div>
+        <div style="width: 25px; height: 3px; background: #002244; margin: 3px 0;"></div>
       <!-- Бургер -->
       <div id="burger">
         <div></div>
@@ -134,15 +343,39 @@
         <div></div>
       </div>
 
+      <!-- Мобильное выпадающее меню -->
+      <div id="burger-menu" style="
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: rgba(255,255,255,0.95);
+        width: 100%;
+        flex-direction: column;
+        padding: 10px;
+      ">
       <!-- Бургер-меню -->
       <div id="burger-menu">
         <a href="index.html" style="padding: 5px 0; color: #002244;">Главная</a>
         <a href="rooms.html" style="padding: 5px 0; color: #002244;">Наши номера</a>
         <a href="afisha.html" style="padding: 5px 0; color: #002244;">Развлечения</a>
-        <a href="#contacts" style="padding: 5px 0; color: #002244;">Контакты</a>
-        <a href="offers.html" style="padding: 5px 0; color: #002244;">Акции</a>
+@@ -273,25 +144,16 @@
       </div>
     </div>
+
+    <!-- Надпись под шапкой -->
+    <!-- каллиграфическая надпись -->
+<div style="
+  font-family: 'Great Vibes', cursive;
+  font-size: 46px;
+  color: white;
+  text-shadow: 1px 1px 3px black;
+  margin-left: 20px;
+  margin-top: 10px;
+  user-select: none;
+">
+  Гостевой дом Эллада предостовляет разнообразный выбор номеров
+</div>
 
     <!-- Каллиграфическая надпись -->
     <div class="hero-text">
@@ -151,27 +384,14 @@
 
   </div>
 
+  <!-- Скрипт -->
   <!-- Скрипты -->
   <script>
     // Бургер меню
     const burger = document.getElementById('burger');
     const menu = document.getElementById('menu');
     const burgerMenu = document.getElementById('burger-menu');
-
-    function updateMenu() {
-      if (window.innerWidth <= 768) {
-        menu.style.display = 'none';
-        burger.style.display = 'flex';
-      } else {
-        menu.style.display = 'flex';
-        burger.style.display = 'none';
-        burgerMenu.style.display = 'none';
-      }
-    }
-
-    window.addEventListener('resize', updateMenu);
-    window.addEventListener('load', updateMenu);
-
+@@ -313,8 +175,24 @@
     burger.addEventListener('click', () => {
       burgerMenu.style.display = burgerMenu.style.display === 'flex' ? 'none' : 'flex';
     });
@@ -192,157 +412,5 @@
     }, 1500);
   </script>
 
+
   </header>
-
-  <main>
-    <!-- КАРТОЧКИ НОМЕРОВ -->
-
-    <div class="room">
-      <div class="left">
-        <img class="main-image" src="фото номер двухместный раздельные кровати/4.jpg" alt="Номер 1">
-      </div>
-      <div class="right">
-        <div>
-          <h2>Уютные двухместные с раздельными кроватями</h2>
-          <p>Всего 2 номера, Wi-Fi, столик, душ, туалет.</p>
-          <p class="price">5 000 ₽ / сутки</p>
-        </div>
-        <div class="gallery">
-          <img src="фото номер двухместный раздельные кровати/1.jpg" onclick="switchImage(this)">
-          <img src="фото номер двухместный раздельные кровати/2.jpg" onclick="switchImage(this)">
-          <img src="фото номер двухместный раздельные кровати/3.jpg" onclick="switchImage(this)">
-          <img src="фото номер двухместный раздельные кровати/5.jpg" onclick="switchImage(this)">
-          <img src="фото номер двухместный раздельные кровати/6.jpg" onclick="switchImage(this)">
-          <img src="фото номер двухместный раздельные кровати/8.jpg" onclick="switchImage(this)">
-          <img src="фото номер двухместный раздельные кровати/9.jpg" onclick="switchImage(this)">
-        </div>
-      </div>
-    </div>
-
-    <div class="room">
-      <div class="left">
-        <img class="main-image" src="фото номер двухместный общая кровать/2.jpg" alt="Номер 2">
-      </div>
-      <div class="right">
-        <div>
-          <h2>Двухместные с односпальными кроватями</h2>
-          <p>Всего 3 номера, Wi-Fi, столик, душ, туалет.</p>
-          <p class="price">5 000 ₽ / сутки</p>
-        </div>
-        <div class="gallery">
-          <img src="фото номер двухместный общая кровать/3.jpg" onclick="switchImage(this)">
-          <img src="фото номер двухместный общая кровать/5.jpg" onclick="switchImage(this)">
-          <img src="фото номер двухместный общая кровать/6.jpg" onclick="switchImage(this)">
-          <img src="фото номер двухместный общая кровать/7.jpg" onclick="switchImage(this)">
-          <img src="фото номер двухместный общая кровать/8.jpg" onclick="switchImage(this)">
-          <img src="фото номер двухместный общая кровать/11.jpg" onclick="switchImage(this)">
-        </div>
-      </div>
-    </div>
-
-    <div class="room">
-      <div class="left">
-        <img class="main-image" src="фото номер трехместный/3.jpg" alt="Номер 3">
-      </div>
-      <div class="right">
-        <div>
-          <h2>Просторные трёхместные</h2>
-          <p>Двухспальная + односпальная кровать. Всего 3 номера, Wi-Fi, душ, туалет.</p>
-          <p class="price">5 500 ₽ / сутки</p>
-        </div>
-        <div class="gallery">
-          <img src="фото номер трехместный/1.jpg" onclick="switchImage(this)">
-          <img src="фото номер трехместный/2.jpg" onclick="switchImage(this)">
-          <img src="фото номер трехместный/4.jpg" onclick="switchImage(this)">
-          <img src="фото номер трехместный/7.jpg" onclick="switchImage(this)">
-          <img src="фото номер трехместный/8.jpg" onclick="switchImage(this)">
-          <img src="фото номер трехместный/9.jpg" onclick="switchImage(this)">
-          <img src="фото номер трехместный/12.jpg" onclick="switchImage(this)">
-        </div>
-      </div>
-    </div>
-
-    <div class="room">
-      <div class="left">
-        <img class="main-image" src="фото номер люкс/8.jpg" alt="Номер 4">
-      </div>
-      <div class="right">
-        <div>
-          <h2>Большие номера "Под крышей"</h2>
-          <p>Площадь ~50 кв.м, в каждом номере по 2 двухспальные кровати. Всего 2 номера.</p>
-          <p class="price">8 500 ₽ / сутки</p>
-        </div>
-        <div class="gallery">
-          <img src="фото номер люкс/1.jpg" onclick="switchImage(this)">
-          <img src="фото номер люкс/2.jpg" onclick="switchImage(this)">
-          <img src="фото номер люкс/3.jpg" onclick="switchImage(this)">
-          <img src="фото номер люкс/4.jpg" onclick="switchImage(this)">
-          <img src="фото номер люкс/5.jpg" onclick="switchImage(this)">
-          <img src="фото номер люкс/6.jpg" onclick="switchImage(this)">
-          <img src="фото номер люкс/7.jpg" onclick="switchImage(this)">
-          <img src="фото номер люкс/9.jpg" onclick="switchImage(this)">
-          
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <script>
-    function switchImage(img) {
-      const mainImg = img.closest('.room').querySelector('.main-image');
-      mainImg.src = img.src;
-      mainImg.alt = img.alt;
-    }
-  </script>
-<!-- Контакты с фоном и белым текстом -->
-<div style="
-  background-image: url('img/fon.jpg');
-  background-size: cover;
-  background-position: center;
-  padding: 40px 20px;
-  color: white;
-  text-shadow: 1px 1px 3px black;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-">
-
-  <!-- Левая колонка -->
-  <div style="flex: 1 1 300px; max-width: 500px;">
-    <h2 style="font-size: 28px; margin-bottom: 10px;">Контакты</h2>
-    <p style="font-size: 18px;">Айский тракт, 149Б<br>Алтайский район, Алтайский край</p>
-    <p style="font-size: 18px;">2 парковки<br>Круглосуточно</p>
-    <p style="font-size: 18px;">
-      <a href="tel:+79620383737" style="color: white; text-decoration: underline;">+7‒962‒038‒37‒37</a>
-    </p>
-    <p style="font-size: 18px;">
-      <a href="https://wa.me/79620383737" target="_blank" style="color: white; text-decoration: underline;">WhatsApp</a>
-    </p>
-  </div>
-
-  <!-- Карта -->
-  <div style="flex: 1 1 300px; max-width: 600px; min-height: 300px;">
-    <iframe 
-      src="https://yandex.ru/map-widget/v1/?ll=85.733197%2C51.800165&z=16&pt=85.733197,51.800165,pm2rdm~ЭЛЛАДА" 
-      width="100%" 
-      height="100%" 
-      frameborder="0" 
-      allowfullscreen
-      style="border-radius: 10px;">
-    </iframe>
-  </div>
-</div>
-
-
-</body>
-</html>
-
-<footer id="contacts" class="footer">
-<footer style="background-color:#222; color:#ccc; padding:1em; text-align:center; font-size:0.9rem; font-family:'Segoe UI', sans-serif;">
-  <p>© 2025 Гостевой дом "Эллада" — Айский тракт, 149Б<br>
-  Алтайский район, Алтайский край</p>
-  <p>WhatsApp: <a href="https://wa.me/79620383737" target="_blank" style="color:#4dafff; text-decoration:none;">+7‒962‒038‒37‒37</a></p>
-</footer>
-</body>
-</html>
