@@ -10,6 +10,9 @@
       scroll-behavior: smooth;
     }
   }
+ .mobile-title {
+    display: none;
+  }
 
   @media (max-width: 768px) {
     .mobile-title {
