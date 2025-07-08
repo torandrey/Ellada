@@ -11,6 +11,12 @@
       scroll-behavior: smooth;
     }
 
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
     .mobile-title {
       display: none;
     }
@@ -23,54 +29,92 @@
         font-size: 26px;
         color: #002244;
       }
-      .slideshow {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  min-height: 100vh;
-  transition: background-image 0.5s ease-in-out;
-}
-
-/* Правим отображение на мобильных устройствах */
-@media (max-width: 768px) {
-  .slideshow {
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center top;
-    background-color: #000; /* или белый фон, если нужно */
-  }
     }
 
-    /* Фоновый блок */
+    /* Слайд-шоу */
     .slideshow {
+      background-image: url('1.jpg');
       background-size: cover;
       background-position: center;
+      background-repeat: no-repeat;
       min-height: 100vh;
-      transition: background-image 1.5s ease-in-out;
+      transition: background-image 1s ease-in-out;
     }
-  </style>
-</head>
 
-<body style="margin:0; padding:0; font-family:Arial, sans-serif;">
+    @media (max-width: 768px) {
+      .slideshow {
+        background-size: contain;
+        background-position: center;
+        background-color: #000;
+      }
+    }
 
-  <!-- Фоновое изображение, которое будет меняться -->
-  <div class="slideshow" id="slideshow">
-
-    <!-- Шапка -->
-    <div style="
-      background-color: rgba(255,255,255,0.85);
+    /* Шапка */
+    .header {
+      background-color: rgba(255, 255, 255, 0.85);
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 10px 15px;
       flex-wrap: wrap;
       position: relative;
-    ">
-      <!-- Левая часть: логотип и кнопки -->
+    }
+
+    /* Бургер */
+    #burger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    #burger div {
+      width: 25px;
+      height: 3px;
+      background: #002244;
+      margin: 3px 0;
+    }
+
+    /* Бургер-меню */
+    #burger-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.95);
+      width: 100vw;
+      box-sizing: border-box;
+      flex-direction: column;
+      padding: 10px 15px;
+      z-index: 1000;
+    }
+
+    /* Каллиграфическая надпись */
+    .hero-text {
+      font-family: 'Great Vibes', cursive;
+      font-size: 46px;
+      color: white;
+      text-shadow: 1px 1px 3px black;
+      margin-left: 20px;
+      margin-top: 10px;
+      user-select: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Слайд-шоу -->
+  <div class="slideshow" id="slideshow">
+
+    <!-- Шапка -->
+    <div class="header">
+      <!-- Левая часть -->
       <div style="display: flex; align-items: center; flex-wrap: wrap;">
         <img src="img/logo.png" alt="Логотип" style="height: 40px; margin-right: 15px;">
         <div class="mobile-title">Гостевой дом Эллада</div>
 
+        <!-- Меню -->
         <div id="menu" style="display: flex; gap: 15px; flex-wrap: wrap;">
           <a href="index.html" style="text-decoration: none; color: #002244;">Главная</a>
           <a href="rooms.html" style="text-decoration: none; color: #002244;">Наши номера</a>
@@ -81,26 +125,14 @@
       </div>
 
       <!-- Бургер -->
-      <div id="burger" style="display: none; flex-direction: column; cursor: pointer;">
-        <div style="width: 25px; height: 3px; background: #002244; margin: 3px 0;"></div>
-        <div style="width: 25px; height: 3px; background: #002244; margin: 3px 0;"></div>
-        <div style="width: 25px; height: 3px; background: #002244; margin: 3px 0;"></div>
+      <div id="burger">
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
 
-      <!-- Мобильное меню -->
-      <div id="burger-menu" style=" 
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: rgba(255,255,255,0.95);
-        width: 100vw;
-        box-sizing: border-box;
-        flex-direction: column;
-        padding: 10px 15px;
-        z-index: 1000;
-      ">
+      <!-- Бургер-меню -->
+      <div id="burger-menu">
         <a href="index.html" style="padding: 5px 0; color: #002244;">Главная</a>
         <a href="rooms.html" style="padding: 5px 0; color: #002244;">Наши номера</a>
         <a href="afisha.html" style="padding: 5px 0; color: #002244;">Развлечения</a>
@@ -110,23 +142,15 @@
     </div>
 
     <!-- Каллиграфическая надпись -->
-    <div style="
-      font-family: 'Great Vibes', cursive;
-      font-size: 46px;
-      color: white;
-      text-shadow: 1px 1px 3px black;
-      margin-left: 20px;
-      margin-top: 10px;
-      user-select: none;
-    ">
+    <div class="hero-text">
       Деревянный дом в самом сердце Алтая
     </div>
 
   </div>
 
-  <!-- Скрипт для бургера и фона -->
+  <!-- Скрипты -->
   <script>
-    // Меню бургер
+    // Бургер меню
     const burger = document.getElementById('burger');
     const menu = document.getElementById('menu');
     const burgerMenu = document.getElementById('burger-menu');
@@ -149,19 +173,19 @@
       burgerMenu.style.display = burgerMenu.style.display === 'flex' ? 'none' : 'flex';
     });
 
-    // Слайдшоу фона
+    // Слайд-шоу
     const slideshow = document.getElementById('slideshow');
     const images = [
-      'фото главные/главное фото 1.jpg',
+      '1.jpg',
       'фото главные/главное фото 2.jpg',
       'фото главные/главное фото 3.jpg',
       'фото главные/главное фото 4.jpg'
     ];
 
-    let currentImage = 0;
+    let index = 0;
     setInterval(() => {
-      currentImage = (currentImage + 1) % images.length;
-      slideshow.style.backgroundImage = `url('${images[currentImage]}')`;
+      index = (index + 1) % images.length;
+      slideshow.style.backgroundImage = `url('${images[index]}')`;
     }, 1500);
   </script>
 
