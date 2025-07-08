@@ -5,22 +5,24 @@
   html {
     scroll-behavior: smooth;
   }
-.mobile-title-inside {
-  display: none;
-}
 
-@media (max-width: 768px) {
-  .mobile-title-inside {
-    display: block;
-    font-family: 'Great Vibes', cursive;
-    font-size: 26px;
-    color: #002244;
-    text-align: center;
-    flex: 1 1 100%;
-    margin-top: 5px;
+  .mobile-title-ellada {
+    display: none;
   }
+
+  @media (max-width: 768px) {
+    .mobile-title-ellada {
+      display: block;
+      font-family: 'Great Vibes', cursive;
+      font-size: 30px;
+      color: #002244;
+      width: 100%;
+      text-align: center;
+      margin: 5px 0;
+    }
   }
 </style>
+
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -56,9 +58,11 @@
           <a href="#contacts" style="text-decoration: none; color: #002244;">Контакты</a>
           <a href="offers.html" style="text-decoration: none; color: #002244;">Акции</a>
         </div>
+        <!-- Каллиграфическая надпись только для мобильной версии -->
+<div class="mobile-title-ellada">Гостевой дом Эллада</div>
+
       </div>
-<!-- Мобильная надпись -->
-<div class="mobile-title">Гостевой дом Эллада</div>
+      
 
       <!-- Бургер справа -->
       <div id="burger" style="display: none; flex-direction: column; cursor: pointer;">
