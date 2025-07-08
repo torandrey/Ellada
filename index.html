@@ -1,44 +1,44 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-
-<style>
-  html {
-    scroll-behavior: smooth;
-  }
-  <style>
-  html {
-    scroll-behavior: smooth;
-  }
-<style>
-  html {
-    scroll-behavior: smooth;
-  }
-
-  .mobile-title {
-    display: none;
-  }
-
-  @media (max-width: 768px) {
-    .mobile-title {
-      display: block;
-      text-align: center;
-      font-family: 'Great Vibes', cursive;
-      font-size: 26px;
-      color: #002244;
-    }
-</style>
-
-</style>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Гостевой дом Эллада</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .mobile-title {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-title {
+        display: block;
+        text-align: center;
+        font-family: 'Great Vibes', cursive;
+        font-size: 26px;
+        color: #002244;
+      }
+    }
+
+    /* Фоновый блок */
+    .slideshow {
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      transition: background-image 0.5s ease-in-out;
+    }
+  </style>
 </head>
+
 <body style="margin:0; padding:0; font-family:Arial, sans-serif;">
 
-  <!-- Фон -->
-  <div style="background-image: url('1.jpg'); background-size: cover; background-position: center; min-height: 100vh;">
+  <!-- Фоновое изображение, которое будет меняться -->
+  <div class="slideshow" id="slideshow">
 
     <!-- Шапка -->
     <div style="
@@ -50,15 +50,11 @@
       flex-wrap: wrap;
       position: relative;
     ">
-
       <!-- Левая часть: логотип и кнопки -->
       <div style="display: flex; align-items: center; flex-wrap: wrap;">
-        <!-- Логотип -->
         <img src="img/logo.png" alt="Логотип" style="height: 40px; margin-right: 15px;">
-        <!-- Мобильная надпись -->
-<div class="mobile-title">Гостевой дом Эллада</div>
+        <div class="mobile-title">Гостевой дом Эллада</div>
 
-        <!-- Меню -->
         <div id="menu" style="display: flex; gap: 15px; flex-wrap: wrap;">
           <a href="index.html" style="text-decoration: none; color: #002244;">Главная</a>
           <a href="rooms.html" style="text-decoration: none; color: #002244;">Наши номера</a>
@@ -67,30 +63,27 @@
           <a href="offers.html" style="text-decoration: none; color: #002244;">Акции</a>
         </div>
       </div>
-      
 
-      <!-- Бургер справа -->
+      <!-- Бургер -->
       <div id="burger" style="display: none; flex-direction: column; cursor: pointer;">
         <div style="width: 25px; height: 3px; background: #002244; margin: 3px 0;"></div>
         <div style="width: 25px; height: 3px; background: #002244; margin: 3px 0;"></div>
         <div style="width: 25px; height: 3px; background: #002244; margin: 3px 0;"></div>
       </div>
 
-      <!-- Мобильное выпадающее меню -->
+      <!-- Мобильное меню -->
       <div id="burger-menu" style=" 
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background: rgba(255,255,255,0.95);
-  width: 100vw;
-  box-sizing: border-box;
-  flex-direction: column;
-  padding: 10px 15px;
-  z-index: 1000;
-">
-
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(255,255,255,0.95);
+        width: 100vw;
+        box-sizing: border-box;
+        flex-direction: column;
+        padding: 10px 15px;
+        z-index: 1000;
       ">
         <a href="index.html" style="padding: 5px 0; color: #002244;">Главная</a>
         <a href="rooms.html" style="padding: 5px 0; color: #002244;">Наши номера</a>
@@ -100,26 +93,24 @@
       </div>
     </div>
 
-    <!-- Надпись под шапкой -->
-    <!-- каллиграфическая надпись -->
-<div style="
-  font-family: 'Great Vibes', cursive;
-  font-size: 46px;
-  color: white;
-  text-shadow: 1px 1px 3px black;
-  margin-left: 20px;
-  margin-top: 10px;
-  user-select: none;
-">
-  Деревянный дом в самом сердце Алтая
-</div>
-
-
+    <!-- Каллиграфическая надпись -->
+    <div style="
+      font-family: 'Great Vibes', cursive;
+      font-size: 46px;
+      color: white;
+      text-shadow: 1px 1px 3px black;
+      margin-left: 20px;
+      margin-top: 10px;
+      user-select: none;
+    ">
+      Деревянный дом в самом сердце Алтая
+    </div>
 
   </div>
 
-  <!-- Скрипт -->
+  <!-- Скрипт для бургера и фона -->
   <script>
+    // Меню бургер
     const burger = document.getElementById('burger');
     const menu = document.getElementById('menu');
     const burgerMenu = document.getElementById('burger-menu');
@@ -141,7 +132,23 @@
     burger.addEventListener('click', () => {
       burgerMenu.style.display = burgerMenu.style.display === 'flex' ? 'none' : 'flex';
     });
+
+    // Слайдшоу фона
+    const slideshow = document.getElementById('slideshow');
+    const images = [
+      '1.jpg',
+      'фото главные/главное фото 2.jpg',
+      'фото главные/главное фото 3.jpg',
+      'фото главные/главное фото 4.jpg'
+    ];
+
+    let currentImage = 0;
+    setInterval(() => {
+      currentImage = (currentImage + 1) % images.length;
+      slideshow.style.backgroundImage = `url('${images[currentImage]}')`;
+    }, 1500);
   </script>
+
 <!-- Второй блок -->
 <div style="
   background-image: url('img/fon.jpg');
