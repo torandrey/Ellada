@@ -28,6 +28,40 @@
       font-size: 26px;
       color: #002244;
     }
+    .background-slider {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* чтобы фон был за контентом */
+  overflow: hidden;
+}
+
+.background-slider .slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.background-slider .slide.active {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .background-slider .slide {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
 </style>
 
 </style>
@@ -36,9 +70,15 @@
   <title>Гостевой дом Эллада</title>
 </head>
 <body style="margin:0; padding:0; font-family:Arial, sans-serif;">
+<!-- Слайдер фона -->
+<div class="background-slider">
+  <div class="slide" style="background-image: url('фото главные/главное фото 1.jpg');"></div>
+  <div class="slide" style="background-image: url('фото главные/главное фото 2.jpg');"></div>
+  <div class="slide" style="background-image: url('фото главные/главное фото 3.jpg');"></div>
+  <div class="slide" style="background-image: url('фото главные/главное фото 4.jpg');"></div>
+</div>
 
   <!-- Фон -->
-  <div style="background-image: url('1.jpg'); background-size: cover; background-position: center; min-height: 100vh;">
 
     <!-- Шапка -->
     <div style="
@@ -331,6 +371,19 @@
   </div>
 </div>
 
+<script>
+  const slides = document.querySelectorAll('.background-slider .slide');
+  let current = 0;
+
+  function showNextSlide() {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }
+
+  slides[current].classList.add('active');
+  setInterval(showNextSlide, 1500); // смена каждые 1.5 секунды
+</script>
 
 </body>
 </html>
