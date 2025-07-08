@@ -16,16 +16,18 @@
     display: none;
   }
 
-  @media (max-width: 768px) {
-    .mobile-title {
-      display: block;
-      background-color: rgba(255, 255, 255, 0.85);
-      text-align: center;
-      font-family: 'Great Vibes', cursive;
-      font-size: 28px;
-      color: #002244;
-      padding: 10px 15px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  .mobile-title {
+  display: block;
+  text-align: center;
+  font-family: 'Great Vibes', cursive;
+  font-size: 28px;
+  color: #002244;
+  margin: 10px 0; /* чтобы сверху и снизу был небольшой отступ */
+  background: none; /* фон убран */
+  padding: 0;       /* отступы убраны */
+  box-shadow: none; /* тень убрана */
+  border-radius: 0; /* скругление убрано */
+  max-width: none;  /* ограничение ширины убрано */
     }
   }
 </style>
