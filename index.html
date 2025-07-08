@@ -1,181 +1,122 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+  <style>
+  html {
+    scroll-behavior: smooth;
+  }
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .mobile-title {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .mobile-title {
+      display: block;
+      text-align: center;
+      font-family: 'Great Vibes', cursive;
+      font-size: 26px;
+      color: #002244;
+    }
+</style>
+
+</style>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Гостевой дом Эллада</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+<body style="margin:0; padding:0; font-family:Arial, sans-serif;">
 
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
+  <!-- Фон -->
+  <div style="background-image: url('1.jpg'); background-size: cover; background-position: center; min-height: 100vh;">
 
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
-
-    .background-slider {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: -1;
-      overflow: hidden;
-    }
-
-    .background-slider .slide {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-    }
-
-    .background-slider .slide.active {
-      opacity: 1;
-    }
-
-    @media (max-width: 768px) {
-      .background-slider .slide {
-        background-size: cover; /* Можно оставить cover для лучшего вида */
-      }
-
-      .mobile-title {
-        display: block;
-        text-align: center;
-        font-family: 'Great Vibes', cursive;
-        font-size: 26px;
-        color: #002244;
-      }
-    }
-
-    .mobile-title {
-      display: none;
-    }
-
-    .header {
-      background-color: rgba(255, 255, 255, 0.85);
+    <!-- Шапка -->
+    <div style="
+      background-color: rgba(255,255,255,0.85);
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 10px 15px;
       flex-wrap: wrap;
       position: relative;
-      z-index: 10;
-    }
+    ">
 
-    #menu {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
+      <!-- Левая часть: логотип и кнопки -->
+      <div style="display: flex; align-items: center; flex-wrap: wrap;">
+        <!-- Логотип -->
+        <img src="img/logo.png" alt="Логотип" style="height: 40px; margin-right: 15px;">
+        <!-- Мобильная надпись -->
+<div class="mobile-title">Гостевой дом Эллада</div>
 
-    #menu a {
-      text-decoration: none;
-      color: #002244;
-    }
+        <!-- Меню -->
+        <div id="menu" style="display: flex; gap: 15px; flex-wrap: wrap;">
+          <a href="index.html" style="text-decoration: none; color: #002244;">Главная</a>
+          <a href="rooms.html" style="text-decoration: none; color: #002244;">Наши номера</a>
+          <a href="afisha.html" style="text-decoration: none; color: #002244;">Развлечения</a>
+          <a href="#contacts" style="text-decoration: none; color: #002244;">Контакты</a>
+          <a href="offers.html" style="text-decoration: none; color: #002244;">Акции</a>
+        </div>
+      </div>
+      
 
-    #burger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-    }
+      <!-- Бургер справа -->
+      <div id="burger" style="display: none; flex-direction: column; cursor: pointer;">
+        <div style="width: 25px; height: 3px; background: #002244; margin: 3px 0;"></div>
+        <div style="width: 25px; height: 3px; background: #002244; margin: 3px 0;"></div>
+        <div style="width: 25px; height: 3px; background: #002244; margin: 3px 0;"></div>
+      </div>
 
-    #burger div {
-      width: 25px;
-      height: 3px;
-      background: #002244;
-      margin: 3px 0;
-    }
+      <!-- Мобильное выпадающее меню -->
+      <div id="burger-menu" style=" 
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(255,255,255,0.95);
+  width: 100vw;
+  box-sizing: border-box;
+  flex-direction: column;
+  padding: 10px 15px;
+  z-index: 1000;
+">
 
-    #burger-menu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: rgba(255,255,255,0.95);
-      width: 100vw;
-      box-sizing: border-box;
-      flex-direction: column;
-      padding: 10px 15px;
-      z-index: 1000;
-    }
-
-    #burger-menu a {
-      padding: 5px 0;
-      color: #002244;
-      text-decoration: none;
-    }
-
-    .title {
-      font-family: 'Great Vibes', cursive;
-      font-size: 46px;
-      color: white;
-      text-shadow: 1px 1px 3px black;
-      margin-left: 20px;
-      margin-top: 10px;
-      user-select: none;
-      z-index: 5;
-      position: relative;
-    }
-
-    @media (max-width: 768px) {
-      .title {
-        font-size: 32px;
-        margin: 20px auto;
-        text-align: center;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Слайдер -->
-  <div class="background-slider">
-    <div class="slide active" style="background-image: url('фото главные/главное фото 1.jpg');"></div>
-    <div class="slide" style="background-image: url('фото главные/главное фото 2.jpg');"></div>
-    <div class="slide" style="background-image: url('фото главные/главное фото 3.jpg');"></div>
-    <div class="slide" style="background-image: url('фото главные/главное фото 4.jpg');"></div>
-  </div>
-
-  <!-- Шапка -->
-  <div class="header">
-    <div style="display: flex; align-items: center; flex-wrap: wrap;">
-      <img src="img/logo.png" alt="Логотип" style="height: 40px; margin-right: 15px;">
-      <div class="mobile-title">Гостевой дом Эллада</div>
-      <div id="menu">
-        <a href="index.html">Главная</a>
-        <a href="rooms.html">Наши номера</a>
-        <a href="afisha.html">Развлечения</a>
-        <a href="#contacts">Контакты</a>
-        <a href="offers.html">Акции</a>
+      ">
+        <a href="index.html" style="padding: 5px 0; color: #002244;">Главная</a>
+        <a href="rooms.html" style="padding: 5px 0; color: #002244;">Наши номера</a>
+        <a href="afisha.html" style="padding: 5px 0; color: #002244;">Развлечения</a>
+        <a href="#contacts" style="padding: 5px 0; color: #002244;">Контакты</a>
+        <a href="offers.html" style="padding: 5px 0; color: #002244;">Акции</a>
       </div>
     </div>
 
-    <div id="burger">
-      <div></div><div></div><div></div>
-    </div>
+    <!-- Надпись под шапкой -->
+    <!-- каллиграфическая надпись -->
+<div style="
+  font-family: 'Great Vibes', cursive;
+  font-size: 46px;
+  color: white;
+  text-shadow: 1px 1px 3px black;
+  margin-left: 20px;
+  margin-top: 10px;
+  user-select: none;
+">
+  Деревянный дом в самом сердце Алтая
+</div>
 
-    <div id="burger-menu">
-      <a href="index.html">Главная</a>
-      <a href="rooms.html">Наши номера</a>
-      <a href="afisha.html">Развлечения</a>
-      <a href="#contacts">Контакты</a>
-      <a href="offers.html">Акции</a>
-    </div>
+
+
   </div>
-
-  <!-- Каллиграфическая надпись -->
-  <div class="title">Деревянный дом в самом сердце Алтая</div>
 
   <!-- Скрипт -->
   <script>
@@ -194,29 +135,13 @@
       }
     }
 
+    window.addEventListener('resize', updateMenu);
+    window.addEventListener('load', updateMenu);
+
     burger.addEventListener('click', () => {
       burgerMenu.style.display = burgerMenu.style.display === 'flex' ? 'none' : 'flex';
     });
-
-    window.addEventListener('resize', updateMenu);
-    window.addEventListener('load', () => {
-      updateMenu();
-
-      // Слайдер
-      const slides = document.querySelectorAll('.background-slider .slide');
-      let current = 0;
-
-      setInterval(() => {
-        slides[current].classList.remove('active');
-        current = (current + 1) % slides.length;
-        slides[current].classList.add('active');
-      }, 6000);
-    });
   </script>
-</body>
-</html>
-
-
 <!-- Второй блок -->
 <div style="
   background-image: url('img/fon.jpg');
