@@ -9,35 +9,48 @@
     html {
       scroll-behavior: smooth;
     }
+  }
+
+  @media (max-width: 768px) {
+    .mobile-title {
+      display: block;
+      text-align: center;
+      font-family: 'Great Vibes', cursive;
+      font-size: 26px;
+      color: #002244;
+    }
   </style>
 </head>
 <body class="afisha-page"> <!-- Класс для фонового отличия -->
 
   <header class="hero">
-    <div class="overlay">
-      <div class="navbar">
-        <div class="nav-left-wrapper">
-          <nav class="nav-left">
-            <a href="index.html" class="nav-link">Главная</a>
-            <a href="#gallery" class="nav-link">О нас</a>
-            <a href="afisha.html" class="nav-link">Развлечения</a>
-          </nav>
-        </div>
-
-        <div class="nav-center">
-          <a href="rooms.html" class="button-main">НАШИ НОМЕРА</a>
-        </div>
-
-        <nav class="nav-right">
-          <a href="#contacts" class="nav-link">Контакты</a>
-          <a href="offers.html" class="nav-link">Акции</a>
+  <div class="overlay">
+    <div class="navbar">
+      <div class="nav-left-wrapper">
+        <nav class="nav-left">
+          <a href="index.html" class="nav-link">Главная</a>
+          <a href="#gallery" class="nav-link">О нас</a>
+          <a href="afisha.html" class="nav-link">Развлечения</a>
         </nav>
       </div>
-    </div>
 
-    <div class="hero-text">
+      <div class="nav-center">
+        <a href="rooms.html" class="button-main">НАШИ НОМЕРА</a>
+      </div>
+
+      <!-- Вот сюда вставляем надпись -->
+      <span class="mobile-title-inline">Гостевой дом Эллада</span>
+
+      <nav class="nav-right">
+        <a href="#contacts" class="nav-link">Контакты</a>
+        <a href="offers.html" class="nav-link">Акции</a>
+      </nav>
     </div>
-  </header>
+  </div>
+
+  <div class="hero-text"></div>
+</header>
+
 
   <!-- Здесь можешь добавить основной контент страницы -->
 
