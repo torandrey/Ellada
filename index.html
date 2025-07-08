@@ -7,6 +7,29 @@
   html {
     scroll-behavior: smooth;
   }
+  <style>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .mobile-title {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .mobile-title {
+      display: block;
+      background-color: rgba(255, 255, 255, 0.85);
+      text-align: center;
+      font-family: 'Great Vibes', cursive;
+      font-size: 36px;
+      color: #002244;
+      padding: 10px 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+  }
+</style>
+
 </style>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,6 +65,8 @@
           <a href="offers.html" style="text-decoration: none; color: #002244;">Акции</a>
         </div>
       </div>
+<!-- Мобильная надпись -->
+<div class="mobile-title">Гостевой дом Эллада</div>
 
       <!-- Бургер справа -->
       <div id="burger" style="display: none; flex-direction: column; cursor: pointer;">
