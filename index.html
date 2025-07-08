@@ -29,6 +29,17 @@
         font-size: 26px;
         color: #002244;
       }
+
+      .slideshow {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      /* Только для второй картинки на мобилке */
+      .photo-2 {
+        background-position: left center !important;
+      }
     }
 
     /* Слайд-шоу */
@@ -41,13 +52,6 @@
       transition: background-image 1s ease-in-out;
     }
 
-    @media (max-width: 768px) {
-  .slideshow {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-      }
-    }
     /* Шапка */
     .header {
       background-color: rgba(255, 255, 255, 0.85);
