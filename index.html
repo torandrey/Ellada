@@ -26,7 +26,7 @@
       position: relative;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-start; /* Изменено с space-between */
       transition: background-image 1s ease-in-out;
     }
 
@@ -111,7 +111,7 @@
       font-size: 48px;
       color: white;
       text-shadow: 2px 2px 5px black;
-      margin: 40px 20px;
+      margin: 80px 20px 0 20px; /* Добавлен отступ сверху */
       user-select: none;
     }
 
@@ -130,8 +130,7 @@
 
       .hero-text {
         font-size: 32px;
-        margin-top: auto;
-        margin-bottom: 40px;
+        margin: 60px 20px 20px 20px; /* Убрал margin-top: auto */
       }
     }
   </style>
@@ -201,6 +200,7 @@
       burgerMenu.style.display = burgerMenu.style.display === 'flex' ? 'none' : 'flex';
     });
   </script>
+  
 <!-- Второй блок -->
 <div style="
   background-image: url('img/fon.jpg');
