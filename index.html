@@ -1,140 +1,102 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+  <style>
+  html {
+    scroll-behavior: smooth;
+  }
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .mobile-title {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .mobile-title {
+      display: block;
+      text-align: center;
+      font-family: 'Great Vibes', cursive;
+      font-size: 26px;
+      color: #002244;
+    }
+    .background-slider {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* чтобы фон был за контентом */
+  overflow: hidden;
+}
+
+.background-slider .slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.background-slider .slide.active {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .background-slider .slide {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+</style>
+
+</style>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Гостевой дом Эллада</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+<body style="margin:0; padding:0; font-family:Arial, sans-serif;">
+<!-- Слайдер фона -->
+<div class="background-slider">
+  <div class="slide" style="background-image: url('фото главные/главное фото 1.jpg');"></div>
+  <div class="slide" style="background-image: url('фото главные/главное фото 2.jpg');"></div>
+  <div class="slide" style="background-image: url('фото главные/главное фото 3.jpg');"></div>
+  <div class="slide" style="background-image: url('фото главные/главное фото 4.jpg');"></div>
+</div>
 
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
+  <!-- Фон -->
 
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
-
-    .mobile-title {
-      display: none;
-    }
-
-    @media (max-width: 768px) {
-      .mobile-title {
-        display: block;
-        text-align: center;
-        font-family: 'Great Vibes', cursive;
-        font-size: 26px;
-        color: #002244;
-      }
-
-      .slideshow {
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-      }
-
-      /* Только для второй картинки на мобилке */
-      .photo-3 {
-        background-position: left center !important;
-      }
-    }
-
-    /* Слайд-шоу */
-    .slideshow {
-      background-image: url('фото главные/главное фото 1.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      min-height: 100vh;
-      transition: background-image 1s ease-in-out;
-    }
-
-    /* Шапка */
-    .header {
-      background-color: rgba(255, 255, 255, 0.85);
+    <!-- Шапка -->
+    <div style="
+      background-color: rgba(255,255,255,0.85);
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 10px 15px;
       flex-wrap: wrap;
       position: relative;
-    }
+    ">
 
-    /* Бургер */
-    #burger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-    }
-
-    #burger div {
-      width: 25px;
-      height: 3px;
-      background: #002244;
-      margin: 3px 0;
-    }
-
-    /* Бургер-меню */
-    #burger-menu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: rgba(255, 255, 255, 0.95);
-      width: 100vw;
-      box-sizing: border-box;
-      flex-direction: column;
-      padding: 10px 15px;
-      z-index: 1000;
-    }
-
-    /* Каллиграфическая надпись */
-    .hero-text {
-      font-family: 'Great Vibes', cursive;
-      font-size: 46px;
-      color: white;
-      text-shadow: 1px 1px 3px black;
-      margin-left: 20px;
-      margin-top: 10px;
-      user-select: none;
-    }
-  </style>
-</head>
-
-<body>
-
-<style>
-  body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-  }
-
-  .background-image {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('фото главные/главное фото 3.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: -1;
-  }
-</style>
-
-<div class="background-image"></div>
-    <!-- Шапка -->
-    <div class="header">
-      <!-- Левая часть -->
+      <!-- Левая часть: логотип и кнопки -->
       <div style="display: flex; align-items: center; flex-wrap: wrap;">
+        <!-- Логотип -->
         <img src="img/logo.png" alt="Логотип" style="height: 40px; margin-right: 15px;">
-        <div class="mobile-title">Гостевой дом Эллада</div>
+        <!-- Мобильная надпись -->
+<div class="mobile-title">Гостевой дом Эллада</div>
 
         <!-- Меню -->
         <div id="menu" style="display: flex; gap: 15px; flex-wrap: wrap;">
@@ -145,16 +107,31 @@
           <a href="offers.html" style="text-decoration: none; color: #002244;">Акции</a>
         </div>
       </div>
+      
 
-      <!-- Бургер -->
-      <div id="burger">
-        <div></div>
-        <div></div>
-        <div></div>
+      <!-- Бургер справа -->
+      <div id="burger" style="display: none; flex-direction: column; cursor: pointer;">
+        <div style="width: 25px; height: 3px; background: #002244; margin: 3px 0;"></div>
+        <div style="width: 25px; height: 3px; background: #002244; margin: 3px 0;"></div>
+        <div style="width: 25px; height: 3px; background: #002244; margin: 3px 0;"></div>
       </div>
 
-      <!-- Бургер-меню -->
-      <div id="burger-menu">
+      <!-- Мобильное выпадающее меню -->
+      <div id="burger-menu" style=" 
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(255,255,255,0.95);
+  width: 100vw;
+  box-sizing: border-box;
+  flex-direction: column;
+  padding: 10px 15px;
+  z-index: 1000;
+">
+
+      ">
         <a href="index.html" style="padding: 5px 0; color: #002244;">Главная</a>
         <a href="rooms.html" style="padding: 5px 0; color: #002244;">Наши номера</a>
         <a href="afisha.html" style="padding: 5px 0; color: #002244;">Развлечения</a>
@@ -163,16 +140,26 @@
       </div>
     </div>
 
-    <!-- Каллиграфическая надпись -->
-    <div class="hero-text">
-      Деревянный дом в самом сердце Алтая
-    </div>
+    <!-- Надпись под шапкой -->
+    <!-- каллиграфическая надпись -->
+<div style="
+  font-family: 'Great Vibes', cursive;
+  font-size: 46px;
+  color: white;
+  text-shadow: 1px 1px 3px black;
+  margin-left: 20px;
+  margin-top: 10px;
+  user-select: none;
+">
+  Деревянный дом в самом сердце Алтая
+</div>
+
+
 
   </div>
 
-  <!-- Скрипты -->
+  <!-- Скрипт -->
   <script>
-    // Бургер меню
     const burger = document.getElementById('burger');
     const menu = document.getElementById('menu');
     const burgerMenu = document.getElementById('burger-menu');
@@ -194,23 +181,7 @@
     burger.addEventListener('click', () => {
       burgerMenu.style.display = burgerMenu.style.display === 'flex' ? 'none' : 'flex';
     });
-
-    // Слайд-шоу
-    const slideshow = document.getElementById('slideshow');
-    const images = [
-      'фото главные/главное фото 1.jpg',
-      'фото главные/главное фото 2.jpg',
-      'супер.jpg',
-      'фото главные/главное фото 4.jpg'
-    ];
-
-    let index = 0;
-    setInterval(() => {
-      index = (index + 1) % images.length;
-      slideshow.style.backgroundImage = `url('${images[index]}')`;
-    }, 1500);
   </script>
-
 <!-- Второй блок -->
 <div style="
   background-image: url('img/fon.jpg');
@@ -220,7 +191,7 @@
   color: white;
   text-align: center;
   font-family: 'Brush Script MT', cursive;
-  font-size: 24px;
+  font-size: 28px;
   line-height: 1.6;
   text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
 ">
@@ -292,7 +263,6 @@
     <img src="фото общее/фото 19.jpg" onclick="setMainPhoto(this)" class="thumb">
     <img src="фото общее/фото 20.jpg" onclick="setMainPhoto(this)" class="thumb">
     <img src="фото общее/фото 21.jpg" onclick="setMainPhoto(this)" class="thumb">
-    <img src="фото общее/фото 23.jpg" onclick="setMainPhoto(this)" class="thumb">
     <img src="фото общее/фото 24.jpg" onclick="setMainPhoto(this)" class="thumb">
     <img src="фото общее/фото 25.jpg" onclick="setMainPhoto(this)" class="thumb">
     <img src="фото общее/фото 28.jpg" onclick="setMainPhoto(this)" class="thumb">
@@ -401,6 +371,19 @@
   </div>
 </div>
 
+<script>
+  const slides = document.querySelectorAll('.background-slider .slide');
+  let current = 0;
+
+  function showNextSlide() {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }
+
+  slides[current].classList.add('active');
+  setInterval(showNextSlide, 1500); // смена каждые 1.5 секунды
+</script>
 
 </body>
 </html>
