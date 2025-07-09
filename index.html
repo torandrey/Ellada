@@ -28,6 +28,27 @@
       font-size: 26px;
       color: #002244;
     }
+    .background {
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ПК: фон для широких экранов */
+@media (min-width: 769px) {
+  .background {
+    background-image: url('1.jpg');
+  }
+}
+
+/* Телефон: фон для мобильных */
+@media (max-width: 768px) {
+  .background {
+    background-image: url('класс1моб.jpg');
+  }
+}
+
 </style>
 
 </style>
@@ -38,7 +59,7 @@
 <body style="margin:0; padding:0; font-family:Arial, sans-serif;">
 
   <!-- Фон -->
-  <div style="background-image: url('класс.png'); background-size: cover; background-position: center; min-height: 100vh;">
+  <div class="background"></div>
 
     <!-- Шапка -->
     <div style="
