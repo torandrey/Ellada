@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Гостевой дом Эллада</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
 
   <style>
     html {
@@ -18,17 +18,21 @@
     }
 
     .slideshow {
-      background-image: url('1.jpg'); /* ПК по умолчанию */
+      background-image: url('1.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       min-height: 100vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       transition: background-image 1s ease-in-out;
     }
 
     @media (max-width: 768px) {
       .slideshow {
-        background-image: url('класс1моб.jpg'); /* моб версия */
+        background-image: url('класс1моб.jpg');
       }
     }
 
@@ -37,9 +41,9 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 10px 15px;
-      flex-wrap: nowrap;
+      padding: 10px 20px;
       position: relative;
+      z-index: 10;
     }
 
     .logo-container {
@@ -59,60 +63,60 @@
       color: #002244;
     }
 
-    #menu {
+    nav#menu {
       display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
+      gap: 20px;
     }
 
-    #menu a {
+    nav#menu a {
       text-decoration: none;
       color: #002244;
+      font-weight: bold;
     }
 
     #burger {
       display: none;
       flex-direction: column;
       cursor: pointer;
+      gap: 4px;
     }
 
     #burger div {
       width: 25px;
       height: 3px;
       background: #002244;
-      margin: 3px 0;
     }
 
     #burger-menu {
       display: none;
+      flex-direction: column;
+      background: rgba(255, 255, 255, 0.95);
       position: absolute;
       top: 100%;
-      right: 0;
       left: 0;
-      background: rgba(255, 255, 255, 0.95);
-      flex-direction: column;
-      padding: 10px 15px;
-      z-index: 999;
+      right: 0;
+      padding: 15px 20px;
+      z-index: 100;
     }
 
     #burger-menu a {
-      padding: 5px 0;
-      color: #002244;
+      padding: 10px 0;
       text-decoration: none;
+      color: #002244;
+      border-bottom: 1px solid #ccc;
     }
 
     .hero-text {
       font-family: 'Great Vibes', cursive;
-      font-size: 46px;
+      font-size: 48px;
       color: white;
-      text-shadow: 1px 1px 3px black;
-      margin-left: 20px;
-      margin-top: 10px;
+      text-shadow: 2px 2px 5px black;
+      margin: 40px 20px;
       user-select: none;
     }
 
     @media (max-width: 768px) {
-      #menu {
+      nav#menu {
         display: none;
       }
 
@@ -124,8 +128,10 @@
         display: block;
       }
 
-      .photo-3 {
-        background-position: left center !important;
+      .hero-text {
+        font-size: 32px;
+        margin-top: auto;
+        margin-bottom: 40px;
       }
     }
   </style>
@@ -133,24 +139,25 @@
 
 <body>
 
-  <div class="slideshow" id="slideshow">
+  <div class="slideshow">
     <!-- Шапка -->
-    <div class="header">
-      <!-- Левая часть: логотип и название -->
+    <header class="header">
+      <!-- Логотип и название -->
       <div class="logo-container">
-        <img src="img/logo.png" alt="Логотип">
+        <img src="img/logo.png" alt="Логотип" />
         <div class="mobile-title">Гостевой дом Эллада</div>
       </div>
 
-      <!-- Меню и бургер -->
-      <div id="menu">
+      <!-- Меню -->
+      <nav id="menu">
         <a href="index.html">Главная</a>
         <a href="rooms.html">Наши номера</a>
         <a href="afisha.html">Развлечения</a>
         <a href="#contacts">Контакты</a>
         <a href="offers.html">Акции</a>
-      </div>
+      </nav>
 
+      <!-- Бургер -->
       <div id="burger">
         <div></div>
         <div></div>
@@ -158,31 +165,30 @@
       </div>
 
       <!-- Мобильное меню -->
-      <div id="burger-menu">
+      <nav id="burger-menu">
         <a href="index.html">Главная</a>
         <a href="rooms.html">Наши номера</a>
         <a href="afisha.html">Развлечения</a>
         <a href="#contacts">Контакты</a>
         <a href="offers.html">Акции</a>
-      </div>
-    </div>
+      </nav>
+    </header>
 
-    <!-- Каллиграфическая надпись -->
+    <!-- Главный заголовок -->
     <div class="hero-text">Деревянный дом в самом сердце Алтая</div>
   </div>
 
-  <!-- JS: только для бургер-меню -->
+  <!-- JS -->
   <script>
     const burger = document.getElementById('burger');
-    const menu = document.getElementById('menu');
     const burgerMenu = document.getElementById('burger-menu');
 
     function updateMenu() {
       if (window.innerWidth <= 768) {
-        menu.style.display = 'none';
+        document.getElementById('menu').style.display = 'none';
         burger.style.display = 'flex';
       } else {
-        menu.style.display = 'flex';
+        document.getElementById('menu').style.display = 'flex';
         burger.style.display = 'none';
         burgerMenu.style.display = 'none';
       }
