@@ -73,6 +73,22 @@
     display: none;
   }
 }
+.features {
+  display: none;
+  margin: 10px 0;
+  padding-left: 20px;
+  font-size: 0.95rem;
+  color: #fff;
+}
+.features li {
+  margin-bottom: 5px;
+}
+@media (max-width: 800px) {
+  .features {
+    display: block;
+  }
+}
+
   .mobile-icons {
     display: none; /* по умолчанию скрыто */
     position: fixed;
@@ -366,7 +382,16 @@
           <img src="фото номер двухместный раздельные кровати/9.jpg" onclick="switchImage(this)">
            <div>
           <h2>Уютные двухместные с раздельными кроватями</h2>
-          <p>Всего 2 номера, Wi-Fi, столик, душ, туалет.</p>
+          <ul class="features">
+  <li>удобная двуспальная кровать</li>
+  <li>телевизор</li>
+  <li>обеденная зона</li>
+  <li>посуда и столовые приборы</li>
+  <li>холодильник</li>
+  <li>чайник</li>
+  <li>санузел</li>
+  <li>бесплатный Wi-Fi</li>
+</ul>
           <p class="price">5 000 ₽ / сутки</p>
         </div>
   <div class="mobile-icons">
