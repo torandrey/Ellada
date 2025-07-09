@@ -29,28 +29,24 @@
         font-size: 26px;
         color: #002244;
       }
-
-      .slideshow {
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-      }
-
-      /* Только для второй картинки на мобилке */
-      .photo-3 {
-        background-position: left center !important;
-      }
     }
 
     /* Слайд-шоу */
-    .slideshow {
-      background-image: url('фото главные/главное фото 1.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      min-height: 100vh;
-      transition: background-image 1s ease-in-out;
-    }
+.slideshow {
+  background-image: url('фото главные/главное фото 1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  transition: background-image 1s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .slideshow {
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+  }
 
     /* Шапка */
     .header {
