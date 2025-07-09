@@ -32,37 +32,31 @@
     }
 
     /* Фоновый блок */
-    .hero {
-      position: relative;
-      background-image: url('1.jpg');
-      background-size: cover;
-      background-position: center;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-    }
+   .hero {
+  position: relative;
+  background-image: url('1.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
 
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgba(0,0,0,0.3);
-      z-index: 1;
-    }
+/* Фон для мобильных */
+@media (max-width: 768px) {
+  .hero {
+    background-image: url('класс1моб.jpg');
+  }
 
-    .header {
-      background-color: rgba(255,255,255,0.85);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 15px;
-      flex-wrap: wrap;
-      position: relative;
-      z-index: 2;
-    }
+  .mobile-title {
+    display: block;
+    text-align: center;
+    font-family: 'Great Vibes', cursive;
+    font-size: 26px;
+    color: #002244;
+  }
+}
 
     #menu {
       display: flex;
