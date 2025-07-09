@@ -11,23 +11,6 @@
       scroll-behavior: smooth;
     }
 
-    .slideshow img.mobile-img {
-  display: none; /* по умолчанию скрыто */
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-@media (max-width: 768px) {
-  .slideshow {
-    background-image: none !important; /* убираем фон */
-  }
-  .slideshow img.mobile-img {
-    display: block; /* показываем картинку */
-  }
-}
-
-
     body {
       margin: 0;
       padding: 0;
@@ -46,24 +29,28 @@
         font-size: 26px;
         color: #002244;
       }
+
+      .slideshow {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      /* Только для второй картинки на мобилке */
+      .photo-3 {
+        background-position: left center !important;
+      }
     }
 
     /* Слайд-шоу */
-.slideshow {
-  background-image: url('фото главные/главное фото 1.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  min-height: 100vh;
-  transition: background-image 1s ease-in-out;
-}
-
-@media (max-width: 768px) {
-  .slideshow {
-    background-size: cover;
-    background-position: top center;
-    background-repeat: no-repeat;
-  }
+    .slideshow {
+      background-image: url('фото главные/главное фото 1.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      transition: background-image 1s ease-in-out;
+    }
 
     /* Шапка */
     .header {
@@ -189,11 +176,13 @@
       burgerMenu.style.display = burgerMenu.style.display === 'flex' ? 'none' : 'flex';
     });
 
-    // фон
-    <div class="slideshow">
-  <img src="фото главные/главное фото 3.jpg" alt="Главное фото" class="mobile-img" />
-</div>
-
+    // Слайд-шоу
+    const slideshow = document.getElementById('slideshow');
+    const images = [
+      'фото главные/главное фото 1.jpg',
+      'фото главные/главное фото 2.jpg',
+      'супер.jpg',
+      'фото главные/главное фото 4.jpg'
     ];
 
     let index = 0;
