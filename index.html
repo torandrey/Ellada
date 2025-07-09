@@ -26,7 +26,7 @@
       position: relative;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start; /* Изменено с space-between */
+      justify-content: space-between;
       transition: background-image 1s ease-in-out;
     }
 
@@ -46,6 +46,23 @@
       z-index: 10;
     }
 
+    .left-section {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav#menu {
+      display: flex;
+      gap: 15px;
+    }
+
+    nav#menu a {
+      text-decoration: none;
+      color: #002244;
+      font-weight: bold;
+    }
+
     .logo-container {
       display: flex;
       align-items: center;
@@ -61,17 +78,6 @@
       font-family: 'Great Vibes', cursive;
       font-size: 24px;
       color: #002244;
-    }
-
-    nav#menu {
-      display: flex;
-      gap: 20px;
-    }
-
-    nav#menu a {
-      text-decoration: none;
-      color: #002244;
-      font-weight: bold;
     }
 
     #burger {
@@ -108,10 +114,10 @@
 
     .hero-text {
       font-family: 'Great Vibes', cursive;
-      font-size: 48px;
+      font-size: 36px;
       color: white;
       text-shadow: 2px 2px 5px black;
-      margin: 80px 20px 0 20px; /* Добавлен отступ сверху */
+      margin: 40px 20px;
       user-select: none;
     }
 
@@ -130,7 +136,8 @@
 
       .hero-text {
         font-size: 32px;
-        margin: 60px 20px 20px 20px; /* Убрал margin-top: auto */
+        margin-top: auto;
+        margin-bottom: 40px;
       }
     }
   </style>
@@ -141,20 +148,22 @@
   <div class="slideshow">
     <!-- Шапка -->
     <header class="header">
-      <!-- Логотип и название -->
-      <div class="logo-container">
-        <img src="img/logo.png" alt="Логотип" />
-        <div class="mobile-title">Гостевой дом Эллада</div>
-      </div>
+      <div class="left-section">
+        <!-- Меню слева -->
+        <nav id="menu">
+          <a href="index.html">Главная</a>
+          <a href="rooms.html">Наши номера</a>
+          <a href="afisha.html">Развлечения</a>
+          <a href="#contacts">Контакты</a>
+          <a href="offers.html">Акции</a>
+        </nav>
 
-      <!-- Меню -->
-      <nav id="menu">
-        <a href="index.html">Главная</a>
-        <a href="rooms.html">Наши номера</a>
-        <a href="afisha.html">Развлечения</a>
-        <a href="#contacts">Контакты</a>
-        <a href="offers.html">Акции</a>
-      </nav>
+        <!-- Логотип -->
+        <div class="logo-container">
+          <img src="img/logo.png" alt="Логотип" />
+          <div class="mobile-title">Гостевой дом Эллада</div>
+        </div>
+      </div>
 
       <!-- Бургер -->
       <div id="burger">
@@ -200,6 +209,7 @@
       burgerMenu.style.display = burgerMenu.style.display === 'flex' ? 'none' : 'flex';
     });
   </script>
+
   
 <!-- Второй блок -->
 <div style="
