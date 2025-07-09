@@ -24,9 +24,6 @@
       background-repeat: no-repeat;
       min-height: 100vh;
       position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
       transition: background-image 1s ease-in-out;
     }
 
@@ -52,17 +49,6 @@
       gap: 20px;
     }
 
-    nav#menu {
-      display: flex;
-      gap: 15px;
-    }
-
-    nav#menu a {
-      text-decoration: none;
-      color: #002244;
-      font-weight: bold;
-    }
-
     .logo-container {
       display: flex;
       align-items: center;
@@ -78,6 +64,17 @@
       font-family: 'Great Vibes', cursive;
       font-size: 24px;
       color: #002244;
+    }
+
+    nav#menu {
+      display: flex;
+      gap: 15px;
+    }
+
+    nav#menu a {
+      text-decoration: none;
+      color: #002244;
+      font-weight: bold;
     }
 
     #burger {
@@ -113,11 +110,16 @@
     }
 
     .hero-text {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
       font-family: 'Great Vibes', cursive;
       font-size: 36px;
       color: white;
       text-shadow: 2px 2px 5px black;
-      margin: 40px 20px;
+      text-align: center;
+      z-index: 5;
       user-select: none;
     }
 
@@ -135,9 +137,8 @@
       }
 
       .hero-text {
-        font-size: 32px;
-        margin-top: auto;
-        margin-bottom: 40px;
+        font-size: 30px;
+        top: 25%;
       }
     }
   </style>
@@ -146,10 +147,19 @@
 <body>
 
   <div class="slideshow">
+    <!-- Текст-слоган -->
+    <div class="hero-text">Деревянный дом в самом сердце Алтая</div>
+
     <!-- Шапка -->
     <header class="header">
       <div class="left-section">
-        <!-- Меню слева -->
+        <!-- Логотип -->
+        <div class="logo-container">
+          <img src="img/logo.png" alt="Логотип" />
+          <div class="mobile-title">Гостевой дом Эллада</div>
+        </div>
+
+        <!-- Меню -->
         <nav id="menu">
           <a href="index.html">Главная</a>
           <a href="rooms.html">Наши номера</a>
@@ -157,12 +167,6 @@
           <a href="#contacts">Контакты</a>
           <a href="offers.html">Акции</a>
         </nav>
-
-        <!-- Логотип -->
-        <div class="logo-container">
-          <img src="img/logo.png" alt="Логотип" />
-          <div class="mobile-title">Гостевой дом Эллада</div>
-        </div>
       </div>
 
       <!-- Бургер -->
@@ -181,9 +185,6 @@
         <a href="offers.html">Акции</a>
       </nav>
     </header>
-
-    <!-- Главный заголовок -->
-    <div class="hero-text">Деревянный дом в самом сердце Алтая</div>
   </div>
 
   <!-- JS -->
