@@ -107,9 +107,28 @@
 
 <body>
 
-  <!-- Слайд-шоу -->
-  <div class="slideshow" id="slideshow">
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
 
+  .background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('фото главные/главное фото 3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
+</style>
+
+<div class="background-image"></div>
     <!-- Шапка -->
     <div class="header">
       <!-- Левая часть -->
