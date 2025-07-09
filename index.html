@@ -11,6 +11,23 @@
       scroll-behavior: smooth;
     }
 
+    .slideshow img.mobile-img {
+  display: none; /* по умолчанию скрыто */
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .slideshow {
+    background-image: none !important; /* убираем фон */
+  }
+  .slideshow img.mobile-img {
+    display: block; /* показываем картинку */
+  }
+}
+
+
     body {
       margin: 0;
       padding: 0;
@@ -172,13 +189,11 @@
       burgerMenu.style.display = burgerMenu.style.display === 'flex' ? 'none' : 'flex';
     });
 
-    // Слайд-шоу
-    const slideshow = document.getElementById('slideshow');
-    const images = [
-      'фото главные/главное фото 1.jpg',
-      'фото главные/главное фото 2.jpg',
-      'супер.jpg',
-      'фото главные/главное фото 4.jpg'
+    // фон
+    <div class="slideshow">
+  <img src="фото главные/главное фото 3.jpg" alt="Главное фото" class="mobile-img" />
+</div>
+
     ];
 
     let index = 0;
