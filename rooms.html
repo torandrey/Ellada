@@ -380,6 +380,46 @@
 
   </header>
 
+<!-- Блок с фоном на всю ширину и высоту -->
+<div class="background-block">
+  <div class="background-content">
+    <h2>Добро пожаловать в Элладу</h2>
+    <p>Идеальное место для отдыха у природы</p>
+  </div>
+</div>
+
+<style>
+.background-block {
+  background-image: url('главные/главное фото 3.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* делает фон "закреплённым" при скролле */
+  width: 100%;
+  height: 100vh; /* высота во весь экран */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.background-block::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4); /* затемнение для контраста */
+}
+
+.background-content {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  padding: 20px;
+}
+</style>
+
+  
   <main>
     <!-- КАРТОЧКИ НОМЕРОВ -->
 
