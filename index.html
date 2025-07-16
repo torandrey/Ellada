@@ -241,7 +241,7 @@
     window.addEventListener('resize', updateMenu);
     window.addEventListener('load', updateMenu);
 
-    // Слайдер
+    // Слайдер (без автопрокрутки)
     const images = [
       'Новая папка/1.jpg',
       'Новая папка/2.jpg',
@@ -265,11 +265,6 @@
       current--;
       showSlide(current);
     }
-
-    setInterval(() => {
-      current++;
-      showSlide(current);
-    }, 7000); // авто-переключение каждые 7 секунд
 
     window.addEventListener('load', () => {
       showSlide(current);
