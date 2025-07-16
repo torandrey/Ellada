@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<!-- META-ТЕГИ ДЛЯ СОЦСЕТЕЙ -->
-<meta property="og:title" content="Гостевой дом Эллада — деревянный дом в самом сердце Алтая!" />
-<meta property="og:description" content="Комфортный отдых в горах, уютая атмосфера, бани, природа. Бронируйте сейчас!" />
-<meta property="og:image" content="https://altay-ellada.ru/img/logo.png" />
-<meta property="og:url" content="https://altay-ellada.ru/" />
-<meta property="og:type" content="website" />
+  <!-- META-ТЕГИ ДЛЯ СОЦСЕТЕЙ -->
+  <meta property="og:title" content="Гостевой дом Эллада — деревянный дом в самом сердце Алтая!" />
+  <meta property="og:description" content="Комфортный отдых в горах, уютая атмосфера, бани, природа. Бронируйте сейчас!" />
+  <meta property="og:image" content="https://altay-ellada.ru/img/logo.png" />
+  <meta property="og:url" content="https://altay-ellada.ru/" />
+  <meta property="og:type" content="website" />
 
-<!-- ТЕГИ ДЛЯ ЯНДЕКСА И GOOGLE -->
-<meta name="description" content="Гостевой дом Эллада — деревянный дом в самом сердце Алтая. Проживание, баня, природа. Бронируйте прямо сейчас!" />
-<meta name="keywords" content="гостевой дом Алтай, отдых на Алтае, база отдыха, деревянный дом, Эллада, баня, река, природа, туризм, кемпинг, Элекмонар, Горный Алтай, снять дом, отдых в горах" />
-<meta name="author" content="Гостевой дом Эллада" />
+  <!-- ТЕГИ ДЛЯ ЯНДЕКСА И GOOGLE -->
+  <meta name="description" content="Гостевой дом Эллада — деревянный дом в самом сердце Алтая. Проживание, баня, природа. Бронируйте прямо сейчас!" />
+  <meta name="keywords" content="гостевой дом Алтай, отдых на Алтае, база отдыха, деревянный дом, Эллада, баня, река, природа, туризм, кемпинг, Элекмонар, Горный Алтай, снять дом, отдых в горах" />
+  <meta name="author" content="Гостевой дом Эллада" />
 
-<!-- FAVICON -->
-<link rel="icon" href="https://altay-ellada.ru/img/logo.png" type="image/png" />
-<meta name="keywords" content="отдых на Алтае, гостевой дом, Элекмонар, Горный Алтай, база отдыха, баня, река, горы, уют, туризм, деревянный дом, дом в аренду, кемпинг, лето на Алтае, отпуск, отдых с детьми, беседки, мангал, кухня, Wi-Fi, коттедж, номера, бронирование, тихое место, природа, горный отдых, снять дом, аренда домика, туризм, уютный отдых, Горный Алтай отдых, уютный дом, домик у реки, дом в горах, отдых семьёй, романтика, база Эллада, отдых Алтай" />
+  <!-- FAVICON -->
+  <link rel="icon" href="https://altay-ellada.ru/img/logo.png" type="image/png" />
 
-  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Гостевой дом Эллада</title>
@@ -32,22 +30,17 @@
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
+      overflow-x: hidden;
     }
 
     .slideshow {
-      background-image: url('Новая папка/1.jpg');
+      width: 100%;
+      height: 100vh;
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      min-height: 100vh;
       position: relative;
       transition: background-image 1s ease-in-out;
-    }
-
-    @media (max-width: 768px) {
-      .slideshow {
-        background-image: url('Новая папка/1.jpg');
-      }
     }
 
     .header {
@@ -140,6 +133,27 @@
       user-select: none;
     }
 
+    .slider-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 40px;
+      color: white;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 10px;
+      cursor: pointer;
+      z-index: 5;
+      user-select: none;
+    }
+
+    .slider-arrow.left {
+      left: 10px;
+    }
+
+    .slider-arrow.right {
+      right: 10px;
+    }
+
     @media (max-width: 768px) {
       nav#menu {
         display: none;
@@ -163,20 +177,22 @@
 
 <body>
 
-  <div class="slideshow">
-    <!-- Текст-слоган -->
+  <div class="slideshow" id="slideshow">
+    <!-- Надпись -->
     <div class="hero-text">Деревянный дом в самом сердце Алтая</div>
+
+    <!-- Стрелки -->
+    <div class="slider-arrow left" onclick="prevSlide()">❮</div>
+    <div class="slider-arrow right" onclick="nextSlide()">❯</div>
 
     <!-- Шапка -->
     <header class="header">
       <div class="left-section">
-        <!-- Логотип -->
         <div class="logo-container">
           <img src="img/logo.png" alt="Логотип" />
           <div class="mobile-title">Гостевой дом Эллада</div>
         </div>
 
-        <!-- Меню -->
         <nav id="menu">
           <a href="index.html">Главная</a>
           <a href="rooms.html">Наши номера</a>
@@ -186,14 +202,12 @@
         </nav>
       </div>
 
-      <!-- Бургер -->
       <div id="burger">
         <div></div>
         <div></div>
         <div></div>
       </div>
 
-      <!-- Мобильное меню -->
       <nav id="burger-menu">
         <a href="index.html">Главная</a>
         <a href="rooms.html">Наши номера</a>
@@ -204,17 +218,21 @@
     </header>
   </div>
 
-  <!-- JS -->
   <script>
     const burger = document.getElementById('burger');
     const burgerMenu = document.getElementById('burger-menu');
+    const menu = document.getElementById('menu');
+
+    burger.addEventListener('click', () => {
+      burgerMenu.style.display = burgerMenu.style.display === 'flex' ? 'none' : 'flex';
+    });
 
     function updateMenu() {
       if (window.innerWidth <= 768) {
-        document.getElementById('menu').style.display = 'none';
+        menu.style.display = 'none';
         burger.style.display = 'flex';
       } else {
-        document.getElementById('menu').style.display = 'flex';
+        menu.style.display = 'flex';
         burger.style.display = 'none';
         burgerMenu.style.display = 'none';
       }
@@ -223,8 +241,38 @@
     window.addEventListener('resize', updateMenu);
     window.addEventListener('load', updateMenu);
 
-    burger.addEventListener('click', () => {
-      burgerMenu.style.display = burgerMenu.style.display === 'flex' ? 'none' : 'flex';
+    // Слайдер
+    const images = [
+      'Новая папка/1.jpg',
+      'Новая папка/2.jpg',
+      'Новая папка/3.jpg'
+    ];
+    let current = 0;
+    const slideshow = document.getElementById('slideshow');
+
+    function showSlide(index) {
+      if (index >= images.length) current = 0;
+      if (index < 0) current = images.length - 1;
+      slideshow.style.backgroundImage = `url('${images[current]}')`;
+    }
+
+    function nextSlide() {
+      current++;
+      showSlide(current);
+    }
+
+    function prevSlide() {
+      current--;
+      showSlide(current);
+    }
+
+    setInterval(() => {
+      current++;
+      showSlide(current);
+    }, 7000); // авто-переключение каждые 7 секунд
+
+    window.addEventListener('load', () => {
+      showSlide(current);
     });
   </script>
 
