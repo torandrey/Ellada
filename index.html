@@ -278,12 +278,13 @@
   background-size: cover;
   background-position: center;
   padding: 60px 20px;
-  color: #556B2F; /* тёмно-оливковый (зелёно-серый) */
+  color: #556B2F;
   text-align: center;
   font-family: 'Brush Script MT', cursive;
-  font-size: 20px; /* уменьшенный размер */
+  font-size: 20px;
   line-height: 1.6;
-  text-shadow: 1px 1px 3px rgba(70, 100, 70, 0.5); /* чуть мягче */
+  text-shadow: 1px 1px 3px rgba(70, 100, 70, 0.5);
+  margin-bottom: 0; /* убираем нижний отступ */
 ">
   Эллада - экологически чистый дом из соснового бруса, расположенный на территории туристического комплекса ,,Бирюзовая Катунь". 
   Здесь, среди живописных гор и страшно красивой реки Вы в полной мере сможете насладиться природой Алтая. 
@@ -310,18 +311,14 @@
       📲 Забронировать через WhatsApp
     </a>
   </div>
-</div>
-
-
-<!-- Третий блок: фотогалерея в полный экран -->
-<!-- Третий блок: фотогалерея с подсветкой и адаптивностью -->
-<div style="
+</div><div style="
   background-image: url('img/fon2.jpg');
   background-size: cover;
   background-position: center;
   padding: 0px 20px;
   text-align: center;
   color: white;
+  margin-top: 0; /* убираем верхний отступ */
 ">
 
   <h2 style="font-size: 46px; margin-bottom: 26px;">Галерея</h2>
@@ -365,24 +362,24 @@
     <img src="фото общее/фото 25.jpg" onclick="setMainPhoto(this)" class="thumb">
     <img src="фото общее/фото 28.jpg" onclick="setMainPhoto(this)" class="thumb">
   </div>
-<!-- Кнопка "Наши номера" -->
-<div style="margin-top: 30px;">
-  <a href="rooms.html" style="
-    display: inline-block;
-    background-color: #ffcc00;
-    color: #000;
-    padding: 12px 24px;
-    font-size: 18px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: bold;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-    transition: background-color 0.3s ease;
-  " onmouseover="this.style.backgroundColor='#e6b800'" onmouseout="this.style.backgroundColor='#ffcc00'">
-    Наши номера
-  </a>
-</div>
 
+  <!-- Кнопка "Наши номера" -->
+  <div style="margin-top: 30px;">
+    <a href="rooms.html" style="
+      display: inline-block;
+      background-color: #ffcc00;
+      color: #000;
+      padding: 12px 24px;
+      font-size: 18px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      transition: background-color 0.3s ease;
+    " onmouseover="this.style.backgroundColor='#e6b800'" onmouseout="this.style.backgroundColor='#ffcc00'">
+      Наши номера
+    </a>
+  </div>
 </div>
 
 <!-- Стили для миниатюр -->
@@ -400,10 +397,9 @@
   }
 
   .thumb.active {
-    border: 2px solid #ffcc00; /* цвет рамки при выборе */
+    border: 2px solid #ffcc00;
   }
 
-  /* Адаптивность */
   @media screen and (max-width: 600px) {
     .thumb {
       height: 60px;
@@ -421,13 +417,11 @@
     const main = document.getElementById('mainPhoto');
     main.src = img.src;
 
-    // Убираем активность со всех
     document.querySelectorAll('.thumb').forEach(el => el.classList.remove('active'));
-
-    // Добавляем активность выбранному
     img.classList.add('active');
   }
 </script>
+
 
 <!-- Контакты с фоном и белым текстом -->
 <div style="
