@@ -1,211 +1,363 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <!-- META-ТЕГИ ДЛЯ СОЦСЕТЕЙ -->
-  <meta property="og:title" content="Гостевой дом Эллада — деревянный дом в самом сердце Алтая!" />
-  <meta property="og:description" content="Комфортный отдых в горах, уютая атмосфера, бани, природа. Бронируйте сейчас!" />
-  <meta property="og:image" content="https://altay-ellada.ru/img/logo.png" />
-  <meta property="og:url" content="https://altay-ellada.ru/" />
-  <meta property="og:type" content="website" />
-
-  <!-- ТЕГИ ДЛЯ ЯНДЕКСА И GOOGLE -->
-  <meta name="description" content="Гостевой дом Эллада — деревянный дом в самом сердце Алтая. Проживание, баня, природа. Бронируйте прямо сейчас!" />
-  <meta name="keywords" content="гостевой дом Алтай, отдых на Алтае, база отдыха, деревянный дом, Эллада, баня, река, природа, туризм, кемпинг, Элекмонар, Горный Алтай, снять дом, отдых в горах" />
-  <meta name="author" content="Гостевой дом Эллада" />
-
-  <!-- FAVICON -->
-  <link rel="icon" href="https://altay-ellada.ru/img/logo.png" type="image/png" />
-
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Гостевой дом Эллада</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Наши номера — Эллада</title>
+  <link rel="stylesheet" href="styles.css" />
   <style>
     html {
       scroll-behavior: smooth;
     }
 
-    body {
+  .mobile-icons {
+    display: none; /* по умолчанию скрыто */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    gap: 12px;
+    flex-direction: column;
+    z-index: 999;
+  }
+
+  .mobile-icons a {
+    background-color: white;
+    border-radius: 50%;
+    padding: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+  }
+
+  .mobile-icons a:hover {
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 768px) {
+    .mobile-icons {
+      display: flex;
+    }
+  }
+.features {
+  
+  margin: 10px 0;
+  padding-left: 20px;
+  font-size: 0.95rem;
+  color: #fff;
+}
+.features li {
+  margin-bottom: 5px;
+}
+@media (max-width: 800px) {
+  .features {
+    display: block;
+  }
+}
+
+ .gallery {
+  display: flex;
+  flex-wrap: wrap; /* ← включаем перенос строк */
+  gap: 8px;
+  margin-top: 10px;
+  position: relative;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.gallery img {
+  width: calc(25% - 6px); /* 4 в ряд, адаптивно */
+  max-width: 100px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  flex: 0 0 auto;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* Убираем свайп-подсказку на десктопе */
+.gallery::after {
+  display: none;
+}
+
+/* Показываем свайп только на мобильных */
+@media (max-width: 600px) {
+  .gallery {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+
+  .gallery img {
+    width: 80px;
+    height: 60px;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+
+  .gallery::after {
+    content: "⇠ Свайп ⇢";
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    padding: 2px 6px;
+    font-size: 12px;
+    border-radius: 4px;
+    pointer-events: none;
+    z-index: 1;
+    display: block;
+  }
+
+  .gallery::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+
+    body.rooms-page {
       margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      overflow-x: hidden;
+      background: url('img/background.jpg') center/cover no-repeat fixed;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
     }
-
-    .hero-section {
-      background-image: url('Фон природы.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      width: 100%;
-      height: 100vh;
+    header.hero {
       position: relative;
+      z-index: 2;
     }
-
-    .header {
-      background-color: rgba(255, 255, 255, 0.85);
+    .overlay {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px 0;
+    }
+    .navbar {
+      max-width: 1200px;
+      margin: 0 auto;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      padding: 10px 20px;
-      position: relative;
-      z-index: 10;
-    }
-
-    .left-section {
-      display: flex;
       align-items: center;
+      padding: 0 20px;
+    }
+    .nav-left, .nav-right {
+      display: flex;
       gap: 20px;
     }
-
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo-container img {
-      height: 40px;
-    }
-
-    .mobile-title {
-      display: none;
-      font-family: 'Great Vibes', cursive;
-      font-size: 24px;
-      color: #002244;
-    }
-
-    nav#menu {
-      display: flex;
-      gap: 15px;
-    }
-
-    nav#menu a {
+    .nav-link {
+      color: #fff;
       text-decoration: none;
-      color: #002244;
-      font-weight: bold;
+      font-weight: 600;
+      transition: color 0.3s;
     }
-
-    #burger {
-      display: none;
-      flex-direction: column;
+    .nav-link:hover {
+      color: #4dafff;
+    }
+    .button-main {
+      background-color: #4dafff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
       cursor: pointer;
-      gap: 4px;
+      transition: background-color 0.3s;
+    }
+    .button-main:hover {
+      background-color: #3a92d1;
     }
 
-    #burger div {
-      width: 25px;
-      height: 3px;
-      background: #002244;
+    main {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
     }
-
-    #burger-menu {
-      display: none;
+    .room {
+      display: flex;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 15px;
+      overflow: hidden;
+      margin-bottom: 40px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+    .room .left {
+      flex: 1;
+      min-width: 300px;
+      max-width: 450px;
+    }
+    .room .left img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 0 0 0 15px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .room .left img:hover {
+      transform: scale(1.05);
+    }
+    .room .right {
+      flex: 1.2;
+      padding: 20px 30px;
+      display: flex;
       flex-direction: column;
-      background: rgba(255, 255, 255, 0.95);
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      padding: 15px 20px;
-      z-index: 100;
+      justify-content: space-between;
+      color: #eee;
     }
-
-    #burger-menu a {
-      padding: 10px 0;
-      text-decoration: none;
-      color: #002244;
-      border-bottom: 1px solid #ccc;
+    .room h2 {
+      margin-top: 0;
+      font-size: 2rem;
+      margin-bottom: 10px;
     }
-
-    .hero-text {
-      position: absolute;
-      top: 20%;
-      left: 50%;
-      transform: translateX(-50%);
-      font-family: 'Great Vibes', cursive;
-      font-size: 46px;
-      color: white;
-      text-shadow: 2px 2px 5px black;
-      text-align: center;
-      z-index: 5;
-      user-select: none;
+    .room p {
+      font-size: 1.1rem;
+      line-height: 1.4;
+      margin-bottom: 15px;
     }
-
-    @media (max-width: 768px) {
-      nav#menu {
-        display: none;
+    .price {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: #4dafff;
+    }
+    @media (max-width: 800px) {
+      .room {
+        flex-direction: column;
       }
-
-      #burger {
-        display: flex;
+      .room .left, .room .right {
+        max-width: 100%;
       }
-
-      .mobile-title {
-        display: block;
+      .gallery img {
+        width: 70px;
+        height: 50px;
       }
+    .room .right {
+  flex: 1.2;
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #eee;
+  min-width: 0; /* ← ДОБАВЬ ЭТУ СТРОКУ */
+}
 
-      .hero-text {
-        font-size: 30px;
-        top: 25%;
-      }
     }
   </style>
 </head>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
-<body>
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Гостевой дом Эллада</title>
+</head>
+<body style="margin:0; padding:0; font-family:Arial, sans-serif;">
 
-  <div class="hero-section">
-    <!-- Надпись -->
-    <div class="hero-text">Деревянный дом в самом сердце Алтая</div>
+  <!-- Фон -->
+  <div style="background-image: url('супер.jpg'); background-size: cover; background-position: center; min-height: 100vh;">
 
     <!-- Шапка -->
-    <header class="header">
-      <div class="left-section">
-        <div class="logo-container">
-          <img src="img/logo.png" alt="Логотип" />
-          <div class="mobile-title">Гостевой дом Эллада</div>
+    <div style="
+      background-color: rgba(255,255,255,0.85);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 15px;
+      flex-wrap: wrap;
+      position: relative;
+    ">
+
+      <!-- Левая часть: логотип и кнопки -->
+      <div style="display: flex; align-items: center; flex-wrap: wrap;">
+        <!-- Логотип -->
+        <img src="img/logo.png" alt="Логотип" style="height: 40px; margin-right: 15px;">
+
+        <!-- Меню -->
+        <div id="menu" style="display: flex; gap: 15px; flex-wrap: wrap;">
+          <a href="index.html" style="text-decoration: none; color: #002244;">Главная</a>
+          <a href="rooms.html" style="text-decoration: none; color: #002244;">Наши номера</a>
+          <a href="afisha.html" style="text-decoration: none; color: #002244;">Развлечения</a>
+          <a href="#contacts" style="text-decoration: none; color: #002244;">Контакты</a>
+          <a href="offers.html" style="text-decoration: none; color: #002244;">Акции</a>
         </div>
-
-        <nav id="menu">
-          <a href="index.html">Главная</a>
-          <a href="rooms.html">Наши номера</a>
-          <a href="afisha.html">Развлечения</a>
-          <a href="#contacts">Контакты</a>
-          <a href="offers.html">Акции</a>
-        </nav>
       </div>
 
-      <div id="burger">
-        <div></div>
-        <div></div>
-        <div></div>
+      <!-- Бургер справа -->
+      <div id="burger" style="display: none; flex-direction: column; cursor: pointer;">
+        <div style="width: 25px; height: 3px; background: #002244; margin: 3px 0;"></div>
+        <div style="width: 25px; height: 3px; background: #002244; margin: 3px 0;"></div>
+        <div style="width: 25px; height: 3px; background: #002244; margin: 3px 0;"></div>
       </div>
 
-      <nav id="burger-menu">
-        <a href="index.html">Главная</a>
-        <a href="rooms.html">Наши номера</a>
-        <a href="afisha.html">Развлечения</a>
-        <a href="#contacts">Контакты</a>
-        <a href="offers.html">Акции</a>
-      </nav>
-    </header>
-  </div>
-  <div class="content" style="padding: 60px 20px;">
-  <h2 style="font-size: 46px; margin: 0 0 26px 0;">Галерея</h2>
-  <!-- Тут будут карточки, фото и прочее -->
+      <!-- Мобильное выпадающее меню -->
+      <div id="burger-menu" style="
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: rgba(255,255,255,0.95);
+        width: 100%;
+        flex-direction: column;
+        padding: 10px;
+      ">
+        <a href="index.html" style="padding: 5px 0; color: #002244;">Главная</a>
+        <a href="rooms.html" style="padding: 5px 0; color: #002244;">Наши номера</a>
+        <a href="afisha.html" style="padding: 5px 0; color: #002244;">Развлечения</a>
+        <a href="#contacts" style="padding: 5px 0; color: #002244;">Контакты</a>
+        <a href="offers.html" style="padding: 5px 0; color: #002244;">Акции</a>
+      </div>
+    </div>
+
+    <!-- Надпись под шапкой -->
+    <!-- каллиграфическая надпись -->
+<div style="
+  font-family: 'Great Vibes', cursive;
+  font-size: 46px;
+  color: white;
+  text-shadow: 1px 1px 3px black;
+  margin-left: 20px;
+  margin-top: 10px;
+  user-select: none;
+">
+  Гостевой дом Эллада предостовляет разнообразный выбор номеров
+</div>
+   <div class="mobile-icons">
+    <a href="https://wa.me/79617841777" target="_blank" aria-label="WhatsApp" rel="noopener noreferrer">
+      <!-- SVG WhatsApp -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#25D366" viewBox="0 0 24 24">
+        <path d="M20.52 3.48A11.79 11.79 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.1 1.57 5.86L0 24l6.44-1.66A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.21-1.25-6.21-3.48-8.52zm-8.38 16.48c-2.49 0-4.78-.65-6.84-1.87l-.49-.29-3.83 1 1-3.72-.31-.5a9.797 9.797 0 0 1-1.9-6.73c0-5.39 4.38-9.77 9.77-9.77 2.6 0 5.05 1.02 6.88 2.85a9.709 9.709 0 0 1 2.85 6.88c0 5.4-4.39 9.78-9.78 9.78zm5.47-7.33c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.78.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.47-2.4-1.48-.89-.79-1.49-1.77-1.67-2.07-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.92-2.2-.24-.57-.48-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.8.37-.28.3-1.07 1.05-1.07 2.57s1.1 2.99 1.25 3.2c.15.2 2.16 3.3 5.23 4.63.73.31 1.3.5 1.75.64.74.22 1.42.19 1.96.12.6-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.08-.12-.27-.2-.57-.35z"/>
+      </svg>
+    </a>
+
+    <a href="tel:+79617841777" aria-label="Позвонить">
+      <!-- SVG Телефон -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#000000" viewBox="0 0 24 24">
+        <path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.11-.21 11.36 11.36 0 0 0 3.58.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A16 16 0 0 1 3 5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.58 1 1 0 0 1-.21 1.11l-2.24 2.1z"/>
+      </svg>
+    </a>
 </div>
 
 
+
+  </div>
+
+  <!-- Скрипт -->
   <script>
     const burger = document.getElementById('burger');
-    const burgerMenu = document.getElementById('burger-menu');
     const menu = document.getElementById('menu');
-
-    burger.addEventListener('click', () => {
-      burgerMenu.style.display = burgerMenu.style.display === 'flex' ? 'none' : 'flex';
-    });
+    const burgerMenu = document.getElementById('burger-menu');
 
     function updateMenu() {
       if (window.innerWidth <= 768) {
@@ -220,10 +372,13 @@
 
     window.addEventListener('resize', updateMenu);
     window.addEventListener('load', updateMenu);
+
+    burger.addEventListener('click', () => {
+      burgerMenu.style.display = burgerMenu.style.display === 'flex' ? 'none' : 'flex';
+    });
   </script>
 
-  
-<!-- Второй блок -->
+  </header>
   
   <main>
     <!-- КАРТОЧКИ НОМЕРОВ -->
